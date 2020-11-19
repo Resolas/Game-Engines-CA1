@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody myRB;
     Vector3 myPos;
+    public GameObject rotYCam;
 
     private float horz, vert;
     private float height;
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour
         else if (onGround != true && Input.GetKeyDown(KeyCode.Space)) isFlying = true;       // sets it to flying while not on ground
 
         transform.Rotate(0,Input.GetAxis("Mouse X") * rotSpeed * Time.deltaTime,0);    // Rotate the player with mouse
+        rotYCam.transform.Rotate(-Input.GetAxis("Mouse Y") * rotSpeed * Time.deltaTime,0,0); // rotate child object to look up and down
     }
 
     void MouseLock()
