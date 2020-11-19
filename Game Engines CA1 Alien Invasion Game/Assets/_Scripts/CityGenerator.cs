@@ -7,6 +7,8 @@ public class CityGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myPos = GetComponent<Vector3>();
+
         GenerateCityClusters();
     }
 
@@ -16,7 +18,7 @@ public class CityGenerator : MonoBehaviour
     [Range(0, 100)]
     private int rng;
 
-
+    Vector3 myPos;
 
     // Update is called once per frame
     void Update()
@@ -28,8 +30,14 @@ public class CityGenerator : MonoBehaviour
     private void GenerateCityClusters()
     {
 
+        if (Physics.Raycast(myPos, Vector3.down, 1000))
+        {
 
+            Instantiate(myGenTable.bodyModules[1],transform.position,Quaternion.identity);
 
+        }
+
+        
 
     }
 }

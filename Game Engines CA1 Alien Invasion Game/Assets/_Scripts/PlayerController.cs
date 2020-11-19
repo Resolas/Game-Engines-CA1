@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     {
         myRB = GetComponent<Rigidbody>();
         myPos = GetComponent<Vector3>();
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     Rigidbody myRB;
@@ -16,19 +18,21 @@ public class PlayerController : MonoBehaviour
 
     private float horz, vert;
     private float height;
-    public float speed = 5f;
+    public float speed = 500f;
+    public float rotSpeed = 50f;
+    public float jumpPower = 10f;
 
-    private bool isFlying;
-    private bool onGround;
-
+    public bool isFlying;
+    public bool onGround;
+    private bool mouseLock = true;
 
     // Update is called once per frame
     void Update()
     {
 
-
+        GroundChecker();
         Movement();
-
+        MouseLock();
     }
 
     void Movement()
@@ -37,15 +41,62 @@ public class PlayerController : MonoBehaviour
         horz = Input.GetAxis("Horizontal"); // Strafe side to side
         vert = Input.GetAxis("Vertical");   // Move forwards & backwards
 
-        if (isFlying)
-            height = Input.GetAxis("Height");   // Ascend & Descend
+        if (isFlying)   // Flight Mode
+        {
+            
 
-        myRB.AddRelativeForce(Vector3.right * speed * horz);
-        myRB.AddRelativeForce(Vector3.forward * speed * vert);
+            myRB.useGravity = false;
+            height = Input.GetAxis("Fly");   // Ascend & Descend
+            myRB.AddForce(Vector3.up * speed * height * Time.deltaTime);
+
+
+
+
+        }
+        else {
+            myRB.useGravity = true;
+        }
+
+
+        myRB.AddRelativeForce(Vector3.right * speed * horz * Time.deltaTime);
+        myRB.AddRelativeForce(Vector3.forward * speed * vert * Time.deltaTime);
 
         
 
-        transform.Rotate(0,Input.GetAxis("Mouse X") * speed * Time.deltaTime,0);    // Rotate the player with mouse
+        if (onGround && Input.GetKeyDown(KeyCode.Space))
+        {
+            myRB.velocity = new Vector3(myRB.velocity.x,jumpPower,myRB.velocity.z);
+
+            
+        }
+        else if (onGround != true && Input.GetKeyDown(KeyCode.Space)) isFlying = true;       // sets it to flying while not on ground
+
+        transform.Rotate(0,Input.GetAxis("Mouse X") * rotSpeed * Time.deltaTime,0);    // Rotate the player with mouse
+    }
+
+    void MouseLock()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+
+    }
+
+    void GroundChecker()
+    {
+
+        if (Physics.Raycast(transform.position, Vector3.down,1.1f))
+        {
+            onGround = true;
+            isFlying = false;
+        }
+        else
+        {
+            onGround = false;
+        }
     }
 
 }
