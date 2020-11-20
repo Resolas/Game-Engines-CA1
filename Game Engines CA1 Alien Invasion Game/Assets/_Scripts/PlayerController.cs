@@ -8,13 +8,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         myRB = GetComponent<Rigidbody>();
-        myPos = GetComponent<Vector3>();
+    //    myPos = GetComponent<Vector3>();
 
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     Rigidbody myRB;
-    Vector3 myPos;
+  //  Vector3 myPos;
     public GameObject rotYCam;
 
     private float horz, vert;

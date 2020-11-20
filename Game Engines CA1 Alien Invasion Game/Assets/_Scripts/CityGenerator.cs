@@ -7,12 +7,13 @@ public class CityGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myPos = GetComponent<Vector3>();
+    //    myPos = GetComponent<Vector3>();
 
-        GetClusterPositions();
+        GenerateBuildingPos();
     }
 
     public CityPrefabTable myGenTable;
+    public GameObject building;
     [Range(0,10)]
     public int clusterNum;
     [Range(0, 100)]
@@ -22,12 +23,12 @@ public class CityGenerator : MonoBehaviour
     public int loopX = 100;
     public int loopZ = 100;
 
-    public int sizeX = 100;
-    public int sizeZ = 100;
+    public int baseX = 100;
+    public int baseZ = 100;
 
     private float curSpawnPos;
 
-    private void GetClusterPositions()
+    private void GenerateBuildingPos()
     {
 
         for (int i = 0; i < loopX; i++)
@@ -36,13 +37,24 @@ public class CityGenerator : MonoBehaviour
             for (int j = 0; j < loopZ; j++)
             {
 
-                if (Physics.Raycast(myPos, Vector3.down, 1000))
+                float xPos = transform.position.x + (baseX * i);
+                float zPos = transform.position.z + (baseZ * j);
+
+                Vector3 rayPos = new Vector3(xPos, 500, zPos);
+                LayerMask mask = LayerMask.GetMask("Ground");
+
+                RaycastHit hit;
+
+                Debug.Log("SPAWN");
+                if (Physics.Raycast(rayPos, Vector3.down, out hit, 1000f, mask))
                 {
-                    var pickBlock = Random.Range(0,myGenTable.bodyModules.Length);
+                    //   var pickBlock = Random.Range(0,myGenTable.bodyModules.Length);
+                    
+                    
 
-                    GenerateCityCluster();
+                //    GenerateCityCluster();
 
-                    Instantiate(myGenTable.bodyModules[pickBlock], transform.position, Quaternion.identity);
+                    Instantiate(building, new Vector3(xPos,hit.point.y,zPos), Quaternion.identity);
 
                 }
 
@@ -55,7 +67,7 @@ public class CityGenerator : MonoBehaviour
 
     private void GenerateCityCluster()
     {
-
+        /*
         for (int i = 0; i < sizeX; i++)
         {
 
@@ -64,8 +76,8 @@ public class CityGenerator : MonoBehaviour
 
             }
         }
-
+        */
     }
-
+    
 
 }

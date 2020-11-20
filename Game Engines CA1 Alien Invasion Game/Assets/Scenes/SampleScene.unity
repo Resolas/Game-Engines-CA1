@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 96121713}
   - component: {fileID: 96121712}
   - component: {fileID: 96121711}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,6 +409,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96121709}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &133658837 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8111878374569139255, guid: a31f6a3904abf654aa696117b3541fcb, type: 3}
+  m_PrefabInstance: {fileID: 6603477929029561814}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &607368495
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,7 +631,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 772162761}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 26.84, z: 0}
+  m_LocalPosition: {x: -338.5, y: 50, z: -321.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1902508384}
@@ -644,14 +649,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa36f75716accdc4fbc0342117119f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clusterChance: 0
+  myGenTable: {fileID: 11400000, guid: 24b3bb02136791743bb3d4930ab516bd, type: 2}
+  building: {fileID: 133658837}
+  clusterNum: 10
+  loopX: 10
+  loopZ: 10
+  baseX: 100
+  baseZ: 100
 --- !u!43 &1109023991
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-34572
+  m_Name: pb_Mesh-1276
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
