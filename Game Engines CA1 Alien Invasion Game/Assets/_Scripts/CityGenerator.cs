@@ -12,13 +12,16 @@ public class CityGenerator : MonoBehaviour
         GenerateBuildingPos();
     }
 
-    public CityPrefabTable myGenTable;
-    public GameObject building;
-    [Range(0,10)]
-    public int clusterNum;
+//    public CityPrefabTable myGenTable;
+    [Header("Spawn Settings")]
+    public GameObject buildingType;
+//    [Range(0,10)]
+//    public int clusterNum;
     [Range(0, 100)]
-    private int rng;
+    public int spawnChance;
+    public bool rngOn;
 
+    [Header("Number Of Objects & Spacing")]
     Vector3 myPos;
     public int loopX = 100;
     public int loopZ = 100;
@@ -54,7 +57,7 @@ public class CityGenerator : MonoBehaviour
 
                 //    GenerateCityCluster();
 
-                    Instantiate(building, new Vector3(xPos,hit.point.y,zPos), Quaternion.identity);
+                    Instantiate(buildingType, new Vector3(xPos,hit.point.y,zPos), Quaternion.identity);
 
                 }
 
@@ -78,6 +81,14 @@ public class CityGenerator : MonoBehaviour
         }
         */
     }
-    
+
+    private void OnDrawGizmos()
+    {
+        float sizeX = baseX * loopX;
+        float sizeZ = baseZ * loopZ;
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(transform.position + new Vector3(baseX * loopX/2, 0, baseZ * loopZ/2), new Vector3(sizeX,500,sizeZ));
+    }
+
 
 }
