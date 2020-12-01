@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     public bool onGround;
     private bool mouseLock = true;
 
+    public FiringSys[] myWeaponSystems = new FiringSys[3];
+
     // Update is called once per frame
     void Update()
     {
@@ -99,6 +101,20 @@ public class PlayerController : MonoBehaviour
         {
             onGround = false;
         }
+    }
+
+    void FireWeaponry()
+    {
+
+        if (Input.GetMouseButton(0)) myWeaponSystems[0].FireWeapons();
+
+
+        if (Input.GetMouseButton(1)) myWeaponSystems[1].FireWeapons();
+
+
+        if (Input.GetKeyDown(KeyCode.Q)) myWeaponSystems[2].FireWeapons();
+
+
     }
 
 }

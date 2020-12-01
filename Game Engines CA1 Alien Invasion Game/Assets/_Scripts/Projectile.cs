@@ -19,6 +19,10 @@ public class Projectile : MonoBehaviour
     public bool hitMultiple = false;
     public bool isExplosive = false;
     public bool isMelee = false;
+    public bool isHoming = false;
+
+    [Header("Effect Settings")]
+    public GameObject[] effectsOnHit;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -34,6 +38,11 @@ public class Projectile : MonoBehaviour
 
             UniHPSys otherHealth = collision.collider.GetComponent<UniHPSys>();
 
+        }
+
+        for (int i = 0; i < effectsOnHit.Length; i++)
+        {
+            Instantiate(effectsOnHit[i],transform.position,Quaternion.identity);
         }
 
         Destroy(gameObject);
