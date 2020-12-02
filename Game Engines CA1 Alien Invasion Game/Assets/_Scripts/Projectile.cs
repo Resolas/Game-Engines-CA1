@@ -27,7 +27,9 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+
+
+        lifetime -= 1 * Time.deltaTime;
     }
 
     private void OnCollisionStay(Collision collision)
@@ -45,6 +47,9 @@ public class Projectile : MonoBehaviour
             Instantiate(effectsOnHit[i],transform.position,Quaternion.identity);
         }
 
+        if (isExplosive) ModeExplosive();
+
+
         Destroy(gameObject);
     }
 
@@ -60,7 +65,37 @@ public class Projectile : MonoBehaviour
     void ModeExplosive()
     {
 
+        Collider[] expHit = Physics.OverlapSphere(transform.position,explodeRadius);
 
+        foreach (Collider hit in expHit)
+        {
+
+            if (hit.CompareTag("Enemy") || hit.CompareTag("Friendly") || hit.CompareTag("Player") || hit.CompareTag("Structure"))
+            {
+
+                if (hit.GetComponent<UniHPSys>() != null)
+                {
+                    hit.GetComponent<UniHPSys>().health -= explodeDamage;
+                    Debug.Log(hit + " Damaged");
+                }
+
+                if (hit.GetComponent<GetModuleParent>() != null)
+                {
+                    hit.GetComponent<GetModuleParent>().moduleHealth -= explodeDamage;
+                    Debug.Log(hit + " Module Damaged");
+                }
+
+            }
+
+        }
+
+
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position,explodeRadius);
     }
 
 }
