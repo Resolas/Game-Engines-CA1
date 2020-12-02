@@ -13,8 +13,8 @@ public class Turret : MonoBehaviour
 
     [Header("Settings")]
 
-    [SerializeField]
-    private Transform myTarget;
+   // [SerializeField]
+    public Transform myTarget;
     public FiringSys[] myWeapons;
     public float range = 250f;
     private float closest;
@@ -27,6 +27,16 @@ public class Turret : MonoBehaviour
     {
 
         Debug.DrawLine(myTarget.transform.position, transform.position, Color.red);
+        transform.LookAt(myTarget);
+
+        if (myTarget != null)
+        {
+            for (int i = 0; i < myWeapons.Length; i++)  // Fire Weapon Systems
+            {
+                myWeapons[i].FireWeapons();
+                Debug.Log("Fire Laser");
+            }
+        }
 
     }
 
@@ -104,7 +114,7 @@ public class Turret : MonoBehaviour
         while (true)
         {
             TrackTarget();
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.3f);
         }
        
     }

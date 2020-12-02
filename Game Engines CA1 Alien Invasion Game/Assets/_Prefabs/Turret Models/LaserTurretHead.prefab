@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 36438212778546494}
   - component: {fileID: 36438212778546495}
   - component: {fileID: 9025707647889018508}
+  - component: {fileID: 921164234459933328}
   m_Layer: 0
   m_Name: LaserTurretHead
   m_TagString: Untagged
@@ -9171,15 +9172,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myTarget: {fileID: 0}
-  myWeapons: []
+  myWeapons:
+  - {fileID: 921164234459933328}
   range: 250
   isFriendly: 0
-  getDist: 0
+  getDistToTarget: 0
   findEnemy: 0
   findFriendly: 1
   findPlayer: 1
   findStructure: 0
   trackRange: 100
+--- !u!114 &921164234459933328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36438212778546492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e090f51fb43763244a4dcc9b19a23680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myFirepoints:
+  - {fileID: 5221300581215776643}
+  - {fileID: 4834635054376659232}
+  myProjectile: {fileID: 6320635666994677909, guid: ed431cd642e5acb4184eb8deb662b23c, type: 3}
+  maxCooldown: 1
 --- !u!1 &1531332283038697356
 GameObject:
   m_ObjectHideFlags: 0
