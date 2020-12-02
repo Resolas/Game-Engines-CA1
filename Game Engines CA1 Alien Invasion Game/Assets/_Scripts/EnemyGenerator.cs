@@ -35,7 +35,7 @@ public class EnemyGenerator : MonoBehaviour
 
             if (i < frontRng - 1)
             {
-                int bodyMod = Random.Range(0, myGenTable.rearModules.Length);
+                int bodyMod = Random.Range(0, myGenTable.bodyModules.Length);
                 GameObject bodyBlock = Instantiate(myGenTable.bodyModules[bodyMod], new Vector3(xPos,yPos,zPos + zSpacing * -i),transform.rotation);
                 bodyBlock.transform.parent = gameObject.transform;
             }
@@ -54,7 +54,7 @@ public class EnemyGenerator : MonoBehaviour
 
             if (i < rearRng - 1)
             {
-                int bodyMod = Random.Range(0, myGenTable.rearModules.Length);
+                int bodyMod = Random.Range(0, myGenTable.bodyModules.Length);
                 GameObject bodyBlock = Instantiate(myGenTable.bodyModules[bodyMod], new Vector3(xPos, yPos, zPos + zSpacing * i), transform.rotation);
                 bodyBlock.transform.parent = gameObject.transform;
             }

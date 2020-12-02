@@ -26,7 +26,7 @@ public class FiringSys : MonoBehaviour
         Cooling();
     }
 
-    public void FireWeapons()
+    public void FireWeapons()       // To be called on other scripts
     {
         if (cooldown <= 0)
         {
