@@ -7757,10 +7757,16 @@ MonoBehaviour:
   damage: 1
   explodeDamage: 1
   explodeRadius: 10
-  speed: 10
+  speed: 60
+  rotSpeed: 100
+  isConSpeed: 0
   lifetime: 5
   hitMultiple: 0
   isExplosive: 1
   isMelee: 0
   isHoming: 0
-  effectsOnHit: []
+  isTrigger: 0
+  myHomingTarget: {fileID: 0}
+  effectsOnHit:
+  - {fileID: 6276477726177593333, guid: 8fb859ef675a2584b937483ea1d2fb5c, type: 3}
+  leaveExEffectsOnHit: []

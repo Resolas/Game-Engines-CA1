@@ -50,6 +50,7 @@ public class Projectile : MonoBehaviour
 
     [Header("Effect Settings")]
     public GameObject[] effectsOnHit;
+    public GameObject[] leaveExEffectsOnHit;    // unparents existing effect on hit
 
     // Update is called once per frame
     void FixedUpdate()
@@ -111,6 +112,11 @@ public class Projectile : MonoBehaviour
         for (int i = 0; i < effectsOnHit.Length; i++)
         {
             Instantiate(effectsOnHit[i], transform.position, Quaternion.identity);
+        }
+
+        for (int i = 0; i < leaveExEffectsOnHit.Length; i++)
+        {
+            leaveExEffectsOnHit[i].transform.SetParent(null);
         }
 
         if (isExplosive) ModeExplosive();
