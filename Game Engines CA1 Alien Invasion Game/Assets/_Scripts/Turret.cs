@@ -113,6 +113,7 @@ public class Turret : MonoBehaviour
     {
         while (true)
         {
+            myTarget = null;
             TrackTarget();
             yield return new WaitForSeconds(0.3f);
         }

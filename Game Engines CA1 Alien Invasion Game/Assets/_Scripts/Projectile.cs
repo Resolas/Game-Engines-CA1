@@ -174,7 +174,7 @@ public class Projectile : MonoBehaviour
         var targetRot = Quaternion.LookRotation(myHomingTarget.position - transform.position);
 
         myRB.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRot, rotSpeed * Time.deltaTime));
-
+        #region 2D homing?
         /*
         Vector3 direction = myHomingTarget.position - myRB.position;
 
@@ -187,6 +187,7 @@ public class Projectile : MonoBehaviour
 
         myRB.velocity = transform.forward * speed;
         */
+        #endregion
     }
 
     private void OnDrawGizmos()

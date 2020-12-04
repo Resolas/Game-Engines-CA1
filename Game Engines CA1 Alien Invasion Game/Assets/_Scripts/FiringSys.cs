@@ -18,6 +18,7 @@ public class FiringSys : MonoBehaviour
     public GameObject myProjectile;
     public float maxCooldown = 1f;
     private float cooldown = 0;
+    public float accuracy = 0.5f;
 
     private Turret getTarget;    // Transfers the Target from Turret AIs to the Projectile in case it is guided
 
@@ -35,7 +36,7 @@ public class FiringSys : MonoBehaviour
             for (int i = 0; i < myFirepoints.Length; i++)
             {
 
-              GameObject projectile =  Instantiate(myProjectile, myFirepoints[i].transform.position, myFirepoints[i].transform.rotation);
+                GameObject projectile = Instantiate(myProjectile, myFirepoints[i].transform.position, myFirepoints[i].transform.rotation * Quaternion.Euler(Random.Range(-accuracy,accuracy), Random.Range(-accuracy, accuracy), Random.Range(-accuracy, accuracy)));
                 projectile.GetComponent<Projectile>().myHomingTarget = setTarget;       // The projectile gets the target data and uses it if it can seek
             }
             cooldown = maxCooldown;
