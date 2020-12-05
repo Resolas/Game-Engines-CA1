@@ -19,6 +19,8 @@ public class FiringSys : MonoBehaviour
     public float maxCooldown = 1f;
     private float cooldown = 0;
     public float accuracy = 0.5f;
+    public bool staggerFire = false;
+    private int stagFireWep = 0;
 
     private Turret getTarget;    // Transfers the Target from Turret AIs to the Projectile in case it is guided
 
@@ -33,12 +35,27 @@ public class FiringSys : MonoBehaviour
         if (cooldown <= 0)
         {
             Transform setTarget = getTarget.myTarget;       // Sends the target data to this value
-            for (int i = 0; i < myFirepoints.Length; i++)
+            if (staggerFire != true)
             {
+                for (int i = 0; i < myFirepoints.Length; i++)
+                {
 
-                GameObject projectile = Instantiate(myProjectile, myFirepoints[i].transform.position, myFirepoints[i].transform.rotation * Quaternion.Euler(Random.Range(-accuracy,accuracy), Random.Range(-accuracy, accuracy), Random.Range(-accuracy, accuracy)));
-                projectile.GetComponent<Projectile>().myHomingTarget = setTarget;       // The projectile gets the target data and uses it if it can seek
+                    GameObject projectile = Instantiate(myProjectile, myFirepoints[i].transform.position, myFirepoints[i].transform.rotation * Quaternion.Euler(Random.Range(-accuracy, accuracy), Random.Range(-accuracy, accuracy), Random.Range(-accuracy, accuracy)));
+                    projectile.GetComponent<Projectile>().myHomingTarget = setTarget;       // The projectile gets the target data and uses it if it can seek
+                }
             }
+            else
+            {
+                int max = myFirepoints.Length;
+                GameObject projectile = Instantiate(myProjectile, myFirepoints[stagFireWep].transform.position, myFirepoints[stagFireWep].transform.rotation * Quaternion.Euler(Random.Range(-accuracy, accuracy), Random.Range(-accuracy, accuracy), Random.Range(-accuracy, accuracy)));
+                projectile.GetComponent<Projectile>().myHomingTarget = setTarget;       // The projectile gets the target data and uses it if it can seek
+
+                stagFireWep++;
+                if (stagFireWep >= max) stagFireWep = 0;
+            }
+
+
+            
             cooldown = maxCooldown;
         }
 

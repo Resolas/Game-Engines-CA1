@@ -33,13 +33,16 @@ public class Turret : MonoBehaviour
 
         if (myTarget != null)
         {
-            if (isRot360 != true)
+            if (isRot360 != true && myGunArms != null)
             {
+                Quaternion look = Quaternion.LookRotation(myTarget.position, transform.position);
                 transform.LookAt(new Vector3(myTarget.position.x, transform.position.y, myTarget.position.z));
                 for (int i = 0; i < myGunArms.Length; i++)
                 {
-                    myGunArms[i].transform.LookAt(new Vector3(myTarget.transform.position.x, myGunArms[i].transform.position.y,myGunArms[i].transform.position.z));
-                //    myGunArms[i].transform.LookAt(myTarget);
+                //    myGunArms[i].transform.rotation = Quaternion.Euler(look.eulerAngles.x,0,0);
+                //    myGunArms[i].transform.LookAt(new Vector3(myTarget.transform.position.x, myGunArms[i].transform.position.y,myGunArms[i].transform.position.z));
+                    
+                    myGunArms[i].transform.LookAt(myTarget);
                 }
             }
             else
@@ -81,7 +84,7 @@ public class Turret : MonoBehaviour
 
         foreach (Collider target in targets)
         {
-            if (target.CompareTag("Untagged") || target.CompareTag("Projectile")) continue;    // Ignore everything that's Untagged
+            if (target.CompareTag("Untagged") || target.CompareTag("Projectile") || target.CompareTag("Ground")) continue;    // Ignore everything that's Untagged
             if (target.CompareTag("Enemy") && findEnemy != true) continue;
             if (target.CompareTag("Friendly") && findFriendly != true) continue;
             if (target.CompareTag("Player") && findPlayer != true) continue;

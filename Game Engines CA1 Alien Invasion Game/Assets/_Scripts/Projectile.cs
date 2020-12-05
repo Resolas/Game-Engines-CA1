@@ -91,6 +91,11 @@ public class Projectile : MonoBehaviour
             Instantiate(effectsOnHit[i],transform.position,Quaternion.identity);
         }
 
+        for (int i = 0; i < leaveExEffectsOnHit.Length; i++)
+        {
+            leaveExEffectsOnHit[i].transform.parent = null;
+        }
+
         if (isExplosive) ModeExplosive();
 
 
@@ -116,7 +121,7 @@ public class Projectile : MonoBehaviour
 
         for (int i = 0; i < leaveExEffectsOnHit.Length; i++)
         {
-            leaveExEffectsOnHit[i].transform.SetParent(null);
+            leaveExEffectsOnHit[i].transform.parent = null;
         }
 
         if (isExplosive) ModeExplosive();
@@ -174,6 +179,8 @@ public class Projectile : MonoBehaviour
         var targetRot = Quaternion.LookRotation(myHomingTarget.position - transform.position);
 
         myRB.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRot, rotSpeed * Time.deltaTime));
+    //    myRB.MoveRotation(Quaternion.LookRotation(Vector3.forward, Vector3.up));
+
         #region 2D homing?
         /*
         Vector3 direction = myHomingTarget.position - myRB.position;
