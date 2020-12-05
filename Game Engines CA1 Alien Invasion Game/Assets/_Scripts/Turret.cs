@@ -71,17 +71,17 @@ public class Turret : MonoBehaviour
 
 
             //    Vector3 pointAB = target.transform.position - transform.position;
-            getDistToTarget = Vector3.Distance(transform.position,target.transform.position);
+            getDistToTarget = Vector3.Distance(transform.position,target.transform.position);   // Get dist between point A and B
             
             Debug.DrawLine(target.transform.position, transform.position, Color.white);
-            if (getDistToTarget <= nearestDist)
+            if (getDistToTarget <= nearestDist)                                                 // If new object is closer than previous, becomes the new closest target
             {
                 nearestDist = getDistToTarget;
                 closestTarget = target.GetComponent<Transform>();
                 
             }
 
-            if (closestTarget != null && nearestDist < trackRange)
+            if (closestTarget != null && nearestDist < trackRange)      // If not null finalize the target
             {
                 myTarget = closestTarget.transform;
                 
@@ -89,7 +89,7 @@ public class Turret : MonoBehaviour
             }
             else
             {
-                myTarget = null;
+                myTarget = null;                // NOTE this does not seem to work, target is reset at IEnumerator
                 Debug.Log("TrackTestNull");
             }
             Debug.Log("nearest target " + nearestDist + " " + closestTarget + " " + myTarget);

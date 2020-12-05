@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildingGenerator : MonoBehaviour
-{
+{   // SCOPE - Creates the Individual Building
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,10 +33,21 @@ public class BuildingGenerator : MonoBehaviour
         {
             float xPos = transform.position.x;
             float zPos = transform.position.z;
+            float yPos = transform.position.y;
 
-            int pickModule = Random.Range(0,myBuilding.bodyModules.Length);
+            int pickBodyModule = Random.Range(0,myBuilding.bodyModules.Length);
+            int pickRoofModule = Random.Range(0,myBuilding.roofModules.Length);
 
-            Instantiate(myBuilding.bodyModules[pickModule], new Vector3(xPos,ySpacing*i,zPos), Quaternion.identity);
+            if (i < heightRng - 1   && myBuilding.bodyModules != null)
+            {
+                Instantiate(myBuilding.bodyModules[pickBodyModule], new Vector3(xPos,yPos + (ySpacing * i), zPos), Quaternion.identity);
+            }
+            else if (myBuilding.roofModules != null)
+            {
+                Instantiate(myBuilding.roofModules[pickRoofModule], new Vector3(xPos,yPos + (ySpacing * i),zPos),Quaternion.identity);
+            }
+
+            
 
         }
 

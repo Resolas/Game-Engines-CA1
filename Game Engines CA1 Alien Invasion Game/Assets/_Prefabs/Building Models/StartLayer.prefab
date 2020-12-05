@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6094510241816036844
+--- !u!1 &8095592181415806337
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8662836646762660228}
-  - component: {fileID: 8266791944498999943}
-  - component: {fileID: 896564397642077978}
-  - component: {fileID: 3049605867512088070}
-  - component: {fileID: 5775982331692415660}
+  - component: {fileID: 8095592181415806396}
+  - component: {fileID: 8095592181415806397}
+  - component: {fileID: 8095592181415806338}
+  - component: {fileID: 8095592181415806339}
+  - component: {fileID: 8095592181415806336}
+  - component: {fileID: 3551207074420907110}
   m_Layer: 0
-  m_Name: BaseCubePrefabGreen
+  m_Name: StartLayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8662836646762660228
+--- !u!4 &8095592181415806396
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6094510241816036844}
+  m_GameObject: {fileID: 8095592181415806337}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -973, y: 0, z: -589}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8266791944498999943
+--- !u!114 &8095592181415806397
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6094510241816036844}
+  m_GameObject: {fileID: 8095592181415806337}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8233d90336aea43098adf6dbabd606a2, type: 3}
@@ -161,55 +162,55 @@ MonoBehaviour:
   - m_Vertices: 0b0000000e00000012000000
   m_SharedTextures: []
   m_Positions:
-  - {x: 0, y: 0, z: 20}
-  - {x: 20, y: 0, z: 20}
-  - {x: 0, y: 20, z: 20}
-  - {x: 20, y: 20, z: 20}
-  - {x: 20, y: 0, z: 20}
-  - {x: 20, y: 0, z: 0}
-  - {x: 20, y: 20, z: 20}
-  - {x: 20, y: 20, z: 0}
-  - {x: 20, y: 0, z: 0}
+  - {x: 0, y: 0, z: 500}
+  - {x: 500, y: 0, z: 500}
+  - {x: 0, y: 50, z: 500}
+  - {x: 500, y: 50, z: 500}
+  - {x: 500, y: 0, z: 500}
+  - {x: 500, y: 0, z: 0}
+  - {x: 500, y: 50, z: 500}
+  - {x: 500, y: 50, z: 0}
+  - {x: 500, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  - {x: 20, y: 20, z: 0}
-  - {x: 0, y: 20, z: 0}
+  - {x: 500, y: 50, z: 0}
+  - {x: 0, y: 50, z: 0}
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 20}
-  - {x: 0, y: 20, z: 0}
-  - {x: 0, y: 20, z: 20}
-  - {x: 0, y: 20, z: 20}
-  - {x: 20, y: 20, z: 20}
-  - {x: 0, y: 20, z: 0}
-  - {x: 20, y: 20, z: 0}
+  - {x: 0, y: 0, z: 500}
+  - {x: 0, y: 50, z: 0}
+  - {x: 0, y: 50, z: 500}
+  - {x: 0, y: 50, z: 500}
+  - {x: 500, y: 50, z: 500}
+  - {x: 0, y: 50, z: 0}
+  - {x: 500, y: 50, z: 0}
   - {x: 0, y: 0, z: 0}
-  - {x: 20, y: 0, z: 0}
-  - {x: 0, y: 0, z: 20}
-  - {x: 20, y: 0, z: 20}
+  - {x: 500, y: 0, z: 0}
+  - {x: 0, y: 0, z: 500}
+  - {x: 500, y: 0, z: 500}
   m_Textures0:
-  - {x: 0, y: 0}
-  - {x: -20, y: 0}
-  - {x: 0, y: 20}
-  - {x: -20, y: 20}
-  - {x: 0, y: 0}
-  - {x: -20, y: 0}
-  - {x: 0, y: 20}
-  - {x: -20, y: 20}
-  - {x: 20, y: 0}
-  - {x: 0, y: 0}
-  - {x: 20, y: 20}
-  - {x: 0, y: 20}
-  - {x: 20, y: 0}
-  - {x: 0, y: 0}
-  - {x: 20, y: 20}
-  - {x: 0, y: 20}
-  - {x: 0, y: 0}
-  - {x: 20, y: 0}
-  - {x: 0, y: -20}
-  - {x: 20, y: -20}
-  - {x: 0, y: -20}
-  - {x: -20, y: -20}
-  - {x: 0, y: 0}
-  - {x: -20, y: 0}
+  - {x: 250, y: -25}
+  - {x: -250, y: -25}
+  - {x: 250, y: 25}
+  - {x: -250, y: 25}
+  - {x: 250, y: -25}
+  - {x: -250, y: -25}
+  - {x: 250, y: 25}
+  - {x: -250, y: 25}
+  - {x: 250, y: -25}
+  - {x: -250, y: -25}
+  - {x: 250, y: 25}
+  - {x: -250, y: 25}
+  - {x: 250, y: -25}
+  - {x: -250, y: -25}
+  - {x: 250, y: 25}
+  - {x: -250, y: 25}
+  - {x: -250, y: 250}
+  - {x: 250, y: 250}
+  - {x: -250, y: -250}
+  - {x: 250, y: -250}
+  - {x: 250, y: -250}
+  - {x: -250, y: -250}
+  - {x: 250, y: 250}
+  - {x: -250, y: 250}
   m_Textures2: []
   m_Textures3: []
   m_Tangents:
@@ -250,13 +251,13 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!23 &896564397642077978
+--- !u!23 &8095592181415806338
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6094510241816036844}
+  m_GameObject: {fileID: 8095592181415806337}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -269,7 +270,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e721f9814ef5ac04ea714bf3b52ea3ce, type: 2}
+  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -291,25 +292,41 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &3049605867512088070
+--- !u!33 &8095592181415806339
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6094510241816036844}
+  m_GameObject: {fileID: 8095592181415806337}
   m_Mesh: {fileID: 0}
---- !u!64 &5775982331692415660
+--- !u!64 &8095592181415806336
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6094510241816036844}
+  m_GameObject: {fileID: 8095592181415806337}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &3551207074420907110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8095592181415806337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 819f439ec80d9974884bb8238486e3b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBuilding: {fileID: 11400000, guid: e073cda017dc9904cb96feb6befb4029, type: 2}
+  minHeight: 1
+  maxHeight: 10
+  ySpacing: 50

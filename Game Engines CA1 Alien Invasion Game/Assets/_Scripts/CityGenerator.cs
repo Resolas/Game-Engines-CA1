@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CityGenerator : MonoBehaviour
-{
+{   // SCOPE - used to generate the section or district the CityElevationGenerator Creates
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +50,7 @@ public class CityGenerator : MonoBehaviour
                 RaycastHit hit;
 
                 Debug.Log("SPAWN");
-                if (Physics.Raycast(rayPos, Vector3.down, out hit, 1000f, mask))
+                if (Physics.Raycast(rayPos, Vector3.down, out hit, 1000f, ~mask))
                 {
                     //   var pickBlock = Random.Range(0,myGenTable.bodyModules.Length);
                     
