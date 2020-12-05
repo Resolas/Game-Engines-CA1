@@ -16,21 +16,39 @@ public class Turret : MonoBehaviour
    // [SerializeField]
     public Transform myTarget;
     public FiringSys[] myWeapons;
+    public GameObject[] myGunArms;
     public float range = 250f;
     private float closest;
     public bool isFriendly = false;
     public float getDistToTarget;
-
+    public bool isRot360 = true;
 
     // Update is called once per frame
     void FixedUpdate()
     {
 
         Debug.DrawLine(myTarget.transform.position, transform.position, Color.red);
-        transform.LookAt(myTarget);
+
+        
 
         if (myTarget != null)
         {
+            if (isRot360 != true)
+            {
+                transform.LookAt(new Vector3(myTarget.position.x, transform.position.y, myTarget.position.z));
+                for (int i = 0; i < myGunArms.Length; i++)
+                {
+                    myGunArms[i].transform.LookAt(new Vector3(myGunArms[i].transform.position.x, myTarget.position.y, myGunArms[i].transform.position.z));
+                }
+            }
+            else
+            {
+                transform.LookAt(myTarget);
+            }
+            
+
+
+
             for (int i = 0; i < myWeapons.Length; i++)  // Fire Weapon Systems
             {
                 myWeapons[i].FireWeapons();
@@ -47,7 +65,7 @@ public class Turret : MonoBehaviour
     public bool findPlayer = true;
     public bool findStructure = false;
 
-    public float trackRange = 100f;
+//    public float trackRange = 100f;
 
     
     
@@ -55,7 +73,7 @@ public class Turret : MonoBehaviour
     void TrackTarget()
     {
 
-        Collider[] targets = Physics.OverlapSphere(transform.position,trackRange);
+        Collider[] targets = Physics.OverlapSphere(transform.position,range);
 
         float nearestDist = Mathf.Infinity;
         Transform closestTarget = null;
@@ -81,7 +99,7 @@ public class Turret : MonoBehaviour
                 
             }
 
-            if (closestTarget != null && nearestDist < trackRange)      // If not null finalize the target
+            if (closestTarget != null && nearestDist < range)      // If not null finalize the target
             {
                 myTarget = closestTarget.transform;
                 
@@ -134,8 +152,8 @@ public class Turret : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position,trackRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position,range);
 
     }
 
