@@ -53,9 +53,26 @@ public class FlyingAI : MonoBehaviour
 
     }
 
+    void FireWeaponsSystems()
+    {
+
+        if (inAttackRange <= range)
+        {
+
+            for (int i = 0; i < myWeapons.Length; i++)
+            {
+                myWeapons[i].FireWeapons();
+
+            }
+
+        }
+
+    }
+
 
 
     private float getDistToTarget;
+    private float inAttackRange;
     void TrackTarget()
         {
 
@@ -88,6 +105,7 @@ public class FlyingAI : MonoBehaviour
                 if (closestTarget != null && nearestDist < trackRange)      // If not null finalize the target
                 {
                     myTarget = closestTarget.transform;
+                inAttackRange = nearestDist;
 
                     Debug.Log("TrackTestHasTarget");
                 }

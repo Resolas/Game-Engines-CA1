@@ -38,7 +38,8 @@ public class Turret : MonoBehaviour
                 transform.LookAt(new Vector3(myTarget.position.x, transform.position.y, myTarget.position.z));
                 for (int i = 0; i < myGunArms.Length; i++)
                 {
-                    myGunArms[i].transform.LookAt(new Vector3(myGunArms[i].transform.position.x, myTarget.position.y, myGunArms[i].transform.position.z));
+                    myGunArms[i].transform.LookAt(new Vector3(myTarget.transform.position.x, myGunArms[i].transform.position.y,myGunArms[i].transform.position.z));
+                //    myGunArms[i].transform.LookAt(myTarget);
                 }
             }
             else
