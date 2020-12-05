@@ -4209,6 +4209,8 @@ GameObject:
   - component: {fileID: 7551178516332185854}
   - component: {fileID: 7551178516332185853}
   - component: {fileID: 996733121187333512}
+  - component: {fileID: 3785208630810545148}
+  - component: {fileID: 2715737659372012605}
   m_Layer: 0
   m_Name: FlyerModel1
   m_TagString: Friendly
@@ -11636,7 +11638,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!114 &7551178516332185853
@@ -11652,16 +11654,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myTarget: {fileID: 0}
-  myWeapons: []
+  myWeapons:
+  - {fileID: 996733121187333512}
   findEnemy: 1
   findFriendly: 0
   findPlayer: 0
   findStructure: 0
   trackRange: 500
   range: 250
-  speed: 10
+  speed: 1000
   turnSpeed: 10
   defaultAltitude: 250
+  altTolerance: 2
+  optimalRange: 100
+  optimalTolerance: 2
 --- !u!114 &996733121187333512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11678,5 +11684,45 @@ MonoBehaviour:
   - {fileID: 6730566467181605252}
   - {fileID: 3399660564862721781}
   myProjectile: {fileID: 7567445830930412241, guid: 35dfbf309a2c9024f89cce76b3f0ee3f, type: 3}
-  maxCooldown: 1
+  maxCooldown: 0.5
   accuracy: 0.5
+  staggerFire: 1
+--- !u!54 &3785208630810545148
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551178516332185852}
+  serializedVersion: 2
+  m_Mass: 5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &2715737659372012605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551178516332185852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84669ef87e6d074a9e8799617f9ddae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myTarget: {fileID: 0}
+  myWeapons: []
+  myGunArms: []
+  range: 250
+  isFriendly: 0
+  getDistToTarget: 0
+  isRot360: 1
+  findEnemy: 0
+  findFriendly: 1
+  findPlayer: 1
+  findStructure: 0

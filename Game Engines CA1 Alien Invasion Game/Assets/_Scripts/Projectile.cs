@@ -18,14 +18,14 @@ public class Projectile : MonoBehaviour
         {
             myCol.isTrigger = false;
         }
-    /*
-        if (isConSpeed) // Impulse for instant speed and drag to zero to emulate a constant velocity without complex velocity code
+    
+        if (isConSpeed != true) // Impulse for instant speed and drag to zero for bullets
         {
             myRB.drag = 0;
-            myRB.AddRelativeForce(Vector3.forward * speed * Time.deltaTime, ForceMode.Impulse);
+            myRB.AddRelativeForce(Vector3.forward * speed, ForceMode.Impulse);
 
         }
-        */
+        
     }
 
     [Header("Settings")]
@@ -60,7 +60,7 @@ public class Projectile : MonoBehaviour
         {
             ModeHoming();
         }
-        else
+        else if (isConSpeed == true)
         {
             myRB.velocity = transform.forward * speed;
         }

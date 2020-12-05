@@ -2420,6 +2420,7 @@ MonoBehaviour:
   myProjectile: {fileID: 6164341405137156377, guid: ec5417ce0ff4d074596b371e5ba9430d, type: 3}
   maxCooldown: 1
   accuracy: 0.5
+  staggerFire: 0
 --- !u!1 &6180082003401070533
 GameObject:
   m_ObjectHideFlags: 0
@@ -2444,7 +2445,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6180082003401070533}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 6}
+  m_LocalPosition: {x: -3.5, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2942794176224958672}

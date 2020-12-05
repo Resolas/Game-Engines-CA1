@@ -7,7 +7,7 @@ public class FiringSys : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        getTarget = GetComponent<Turret>(); ;
+        getTarget = GetComponent<Turret>();
         
 
     }
@@ -34,6 +34,7 @@ public class FiringSys : MonoBehaviour
     {
         if (cooldown <= 0)
         {
+            
             Transform setTarget = getTarget.myTarget;       // Sends the target data to this value
             if (staggerFire != true)
             {

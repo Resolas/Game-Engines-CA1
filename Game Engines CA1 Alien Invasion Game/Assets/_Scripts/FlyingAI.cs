@@ -24,6 +24,10 @@ public class FlyingAI : MonoBehaviour
     public float speed = 10f;
     public float turnSpeed = 10f;
     public float defaultAltitude = 250f;
+    public float altTolerance = 2;
+    
+    public float optimalRange  = 100;
+    public float optimalTolerance = 2;
 
     private void Start()
     {
@@ -34,20 +38,41 @@ public class FlyingAI : MonoBehaviour
     {
         TrackTarget();
         AIDecision();
+        FireWeaponsSystems();
     }
 
     void AIDecision()
     {
-
+        
         if (myTarget != null)
         {
-            myRB.velocity = new Vector3(0, 0, 0);
+            myRB.drag = 0.1f;
+            transform.LookAt(new Vector3(myTarget.position.x, transform.position.y, myTarget.position.z));
+
+            if (transform.position.y < myTarget.position.y - altTolerance)  // Altitude Control
+            {
+                myRB.AddForce(Vector3.up * speed * Time.deltaTime);
+            }
+            else if (transform.position.y > myTarget.position.y + altTolerance)
+            {
+                myRB.AddForce(Vector3.down * speed * Time.deltaTime);
+            }
+
+            if (inAttackRange < optimalRange - optimalTolerance)
+            {
+                myRB.AddRelativeForce(Vector3.back * speed * Time.deltaTime);
+            }
+            else if (inAttackRange > optimalTolerance + optimalTolerance)
+            {
+                myRB.AddRelativeForce(Vector3.forward * speed * Time.deltaTime);
+
+            }
         }
-        else if (myTarget)
+        else
         {
-            transform.LookAt(new Vector3(myTarget.position.x,transform.position.y,myTarget.position.z));
-
-
+ 
+            myRB.velocity = new Vector3(0, 0, 0);
+            myRB.drag = 5;
 
         }
 
@@ -55,7 +80,7 @@ public class FlyingAI : MonoBehaviour
 
     void FireWeaponsSystems()
     {
-
+        Debug.Log(inAttackRange);
         if (inAttackRange <= range)
         {
 
@@ -71,8 +96,8 @@ public class FlyingAI : MonoBehaviour
 
 
 
-    private float getDistToTarget;
-    private float inAttackRange;
+    private float getDistToTarget;      // Gets the distance of all targets in range
+    private float inAttackRange;        // Gets the distance of the nearest target
     void TrackTarget()
         {
 
@@ -83,7 +108,7 @@ public class FlyingAI : MonoBehaviour
 
             foreach (Collider target in targets)
             {
-                if (target.CompareTag("Untagged") || target.CompareTag("Projectile")) continue;    // Ignore everything that's Untagged
+                if (target.CompareTag("Untagged") || target.CompareTag("Projectile") || target.CompareTag("Ground")) continue;    // Ignore everything that's Untagged
                 if (target.CompareTag("Enemy") && findEnemy != true) continue;
                 if (target.CompareTag("Friendly") && findFriendly != true) continue;
                 if (target.CompareTag("Player") && findPlayer != true) continue;
@@ -114,7 +139,7 @@ public class FlyingAI : MonoBehaviour
                     myTarget = null;                // NOTE this does not seem to work, target is reset at IEnumerator
                     Debug.Log("TrackTestNull");
                 }
-                Debug.Log("nearest target " + nearestDist + " " + closestTarget + " " + myTarget);
+             //   Debug.Log("nearest target " + nearestDist + " " + closestTarget + " " + myTarget);
 
 
 
