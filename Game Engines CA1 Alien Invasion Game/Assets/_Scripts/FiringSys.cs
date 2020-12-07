@@ -34,7 +34,7 @@ public class FiringSys : MonoBehaviour
     {
         if (cooldown <= 0)
         {
-            
+
             Transform setTarget = getTarget.myTarget;       // Sends the target data to this value
             if (staggerFire != true)
             {

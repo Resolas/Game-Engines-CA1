@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373804566978956430}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: -0.54, z: 0}
+  m_LocalPosition: {x: 3, y: -0.54, z: 0.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4261659667883506244}
@@ -2125,7 +2125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3845448550566326044}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: -0.54, z: 0}
+  m_LocalPosition: {x: -3, y: -0.54, z: 0.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8091221459224938970}
@@ -4211,6 +4211,7 @@ GameObject:
   - component: {fileID: 996733121187333512}
   - component: {fileID: 3785208630810545148}
   - component: {fileID: 2715737659372012605}
+  - component: {fileID: 6236078252231462209}
   m_Layer: 0
   m_Name: FlyerModel1
   m_TagString: Friendly
@@ -11666,6 +11667,7 @@ MonoBehaviour:
   turnSpeed: 10
   defaultAltitude: 250
   altTolerance: 2
+  offsetAlt: 1
   optimalRange: 100
   optimalTolerance: 2
 --- !u!114 &996733121187333512
@@ -11684,8 +11686,8 @@ MonoBehaviour:
   - {fileID: 6730566467181605252}
   - {fileID: 3399660564862721781}
   myProjectile: {fileID: 7567445830930412241, guid: 35dfbf309a2c9024f89cce76b3f0ee3f, type: 3}
-  maxCooldown: 0.5
-  accuracy: 0.5
+  maxCooldown: 0.25
+  accuracy: 2
   staggerFire: 1
 --- !u!54 &3785208630810545148
 Rigidbody:
@@ -11722,7 +11724,30 @@ MonoBehaviour:
   isFriendly: 0
   getDistToTarget: 0
   isRot360: 1
-  findEnemy: 0
-  findFriendly: 1
-  findPlayer: 1
+  findEnemy: 1
+  findFriendly: 0
+  findPlayer: 0
   findStructure: 0
+--- !u!114 &6236078252231462209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551178516332185852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecaae6dee170b74fb5a958248a97ef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  isUnit: 1
+  isPlayer: 0
+  isStructure: 0
+  isDead: 0
+  destroyImmOnDeath: 1
+  playDeathEffectNow: 1
+  deathEffect: {fileID: 6276477726177593333, guid: 8fb859ef675a2584b937483ea1d2fb5c, type: 3}
+  subExplosions: {fileID: 4794017598366529234, guid: 9556cde50f3c0124c9ee841fcf2b1738, type: 3}
+  subExpRange: 10
+  instantiateOnPos: {fileID: 0}

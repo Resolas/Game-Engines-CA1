@@ -17,6 +17,7 @@ public class BuildingGenerator : MonoBehaviour
     [Header("Building Generation Settings")]
 
     public CityPrefabTable myBuilding;
+    public GameObject myFoundation;
     public int minHeight = 1;
     public int maxHeight = 10;
 
@@ -28,8 +29,8 @@ public class BuildingGenerator : MonoBehaviour
 
     void GenerateBuilding()
     {
-
-        for (int i = 0; i < heightRng; i++)
+        
+        for (int i = 1; i < heightRng; i++)
         {
             float xPos = transform.position.x;
             float zPos = transform.position.z;
@@ -47,7 +48,10 @@ public class BuildingGenerator : MonoBehaviour
                 Instantiate(myBuilding.roofModules[pickRoofModule], new Vector3(xPos,yPos + (ySpacing * i),zPos),Quaternion.identity);
             }
 
-            
+            if (i == 1 && myFoundation != null) // Generate Building Foundation for Variable Terrain
+            {
+                Instantiate(myFoundation, new Vector3(xPos,yPos - (ySpacing * i),zPos), Quaternion.identity);
+            }
 
         }
 

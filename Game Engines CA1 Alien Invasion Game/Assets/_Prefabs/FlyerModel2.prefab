@@ -47,9 +47,10 @@ GameObject:
   - component: {fileID: 3217785277540183952}
   - component: {fileID: 3797814570847952644}
   - component: {fileID: 2483836059547288018}
+  - component: {fileID: 8725180421724316205}
   m_Layer: 0
   m_Name: FlyerModel2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5739,9 +5740,9 @@ MonoBehaviour:
   findStructure: 0
   trackRange: 1000
   range: 250
-  speed: 10
+  speed: 2000
   turnSpeed: 10
-  defaultAltitude: 250
+  defaultAltitude: 500
   altTolerance: 2
   optimalRange: 100
   optimalTolerance: 2
@@ -5776,7 +5777,7 @@ MonoBehaviour:
   myFirepoints:
   - {fileID: 3157314617107848394}
   myProjectile: {fileID: 6320635666994677909, guid: ed431cd642e5acb4184eb8deb662b23c, type: 3}
-  maxCooldown: 0.1
+  maxCooldown: 0.2
   accuracy: 3
   staggerFire: 0
 --- !u!114 &2483836059547288018
@@ -5802,3 +5803,25 @@ MonoBehaviour:
   findFriendly: 1
   findPlayer: 1
   findStructure: 0
+--- !u!114 &8725180421724316205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6768635946693589603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecaae6dee170b74fb5a958248a97ef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 60
+  isUnit: 0
+  isPlayer: 0
+  isStructure: 0
+  isDead: 0
+  destroyImmOnDeath: 1
+  playDeathEffectNow: 1
+  deathEffect: {fileID: 7078434547171161067, guid: a792bc7e37413e845912e1d413097d61, type: 3}
+  subExplosions: {fileID: 4794017598366529234, guid: 9556cde50f3c0124c9ee841fcf2b1738, type: 3}
+  subExpRange: 10

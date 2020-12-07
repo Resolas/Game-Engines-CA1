@@ -25,6 +25,7 @@ public class FlyingAI : MonoBehaviour
     public float turnSpeed = 10f;
     public float defaultAltitude = 250f;
     public float altTolerance = 2;
+    public float offsetAlt = 0;
     
     public float optimalRange  = 100;
     public float optimalTolerance = 2;
@@ -49,11 +50,11 @@ public class FlyingAI : MonoBehaviour
             myRB.drag = 0.1f;
             transform.LookAt(new Vector3(myTarget.position.x, transform.position.y, myTarget.position.z));
 
-            if (transform.position.y < myTarget.position.y - altTolerance)  // Altitude Control
+            if (transform.position.y < myTarget.position.y - altTolerance + offsetAlt)  // Altitude Control
             {
                 myRB.AddForce(Vector3.up * speed * Time.deltaTime);
             }
-            else if (transform.position.y > myTarget.position.y + altTolerance)
+            else if (transform.position.y > myTarget.position.y + altTolerance + offsetAlt)
             {
                 myRB.AddForce(Vector3.down * speed * Time.deltaTime);
             }
@@ -98,6 +99,7 @@ public class FlyingAI : MonoBehaviour
 
     private float getDistToTarget;      // Gets the distance of all targets in range
     private float inAttackRange;        // Gets the distance of the nearest target
+    
     void TrackTarget()
         {
 
@@ -105,8 +107,8 @@ public class FlyingAI : MonoBehaviour
 
             float nearestDist = Mathf.Infinity;
             Transform closestTarget = null;
-
-            foreach (Collider target in targets)
+        bool isVis;
+        foreach (Collider target in targets)
             {
                 if (target.CompareTag("Untagged") || target.CompareTag("Projectile") || target.CompareTag("Ground")) continue;    // Ignore everything that's Untagged
                 if (target.CompareTag("Enemy") && findEnemy != true) continue;
@@ -114,20 +116,34 @@ public class FlyingAI : MonoBehaviour
                 if (target.CompareTag("Player") && findPlayer != true) continue;
                 if (target.CompareTag("Structure") && findStructure != true) continue;
 
+            // LOS
+            RaycastHit hit;
 
+            if (Physics.Raycast(transform.position, target.transform.position - transform.position, out hit) && hit.transform.tag == target.transform.tag)
+            {
+                isVis = true;
+                Debug.Log("VIS TRUE");
+                Debug.DrawLine(target.transform.position, transform.position, Color.green);
+            }
+            else
+            {
+                isVis = false;
+                Debug.Log("VIS FALSE");
+                Debug.DrawLine(target.transform.position, transform.position, Color.red);
+            }
 
-                //    Vector3 pointAB = target.transform.position - transform.position;
-                getDistToTarget = Vector3.Distance(transform.position, target.transform.position);   // Get dist between point A and B
+            //    Vector3 pointAB = target.transform.position - transform.position;
+            getDistToTarget = Vector3.Distance(transform.position, target.transform.position);   // Get dist between point A and B
 
-                Debug.DrawLine(target.transform.position, transform.position, Color.white);
-                if (getDistToTarget <= nearestDist)                                                 // If new object is closer than previous, becomes the new closest target
+                
+                if (getDistToTarget <= nearestDist && isVis)                                                 // If new object is closer than previous, becomes the new closest target
                 {
                     nearestDist = getDistToTarget;
                     closestTarget = target.GetComponent<Transform>();
 
                 }
 
-                if (closestTarget != null && nearestDist < trackRange)      // If not null finalize the target
+                if (closestTarget != null && nearestDist < trackRange && isVis)      // If not null finalize the target
                 {
                     myTarget = closestTarget.transform;
                 inAttackRange = nearestDist;

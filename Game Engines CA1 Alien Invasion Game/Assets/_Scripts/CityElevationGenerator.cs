@@ -6,7 +6,8 @@ public class CityElevationGenerator : MonoBehaviour
 {   // SCOPE - used to generate the entire level (same as city gen but has no rng to spawn and raycast)
 
     [Header("Generation Settings")]
-    public int loopX = 3, loopZ = 3;
+    public int loopX = 3;
+    public int loopZ = 3;
     public float baseX = 100, baseZ = 100;
     public GameObject sectionGenerator;
 

@@ -27,7 +27,7 @@ public class Turret : MonoBehaviour
     void FixedUpdate()
     {
 
-        Debug.DrawLine(myTarget.transform.position, transform.position, Color.red);
+     //   Debug.DrawLine(myTarget.transform.position, transform.position, Color.red);
 
         
 
@@ -81,6 +81,7 @@ public class Turret : MonoBehaviour
 
         float nearestDist = Mathf.Infinity;
         Transform closestTarget = null;
+        bool isVis;
 
         foreach (Collider target in targets)
         {
@@ -90,20 +91,35 @@ public class Turret : MonoBehaviour
             if (target.CompareTag("Player") && findPlayer != true) continue;
             if (target.CompareTag("Structure") && findStructure != true) continue;
 
+            // LOS
+            RaycastHit hit;
+
+            if (Physics.Raycast(transform.position, target.transform.position - transform.position, out hit) && hit.transform.tag == target.transform.tag)
+            {
+                isVis = true;
+                Debug.DrawLine(target.transform.position, transform.position, Color.green);
+            }
+            else
+            {
+                isVis = false;
+                Debug.DrawLine(target.transform.position, transform.position, Color.red);
+            }
+
+
 
 
             //    Vector3 pointAB = target.transform.position - transform.position;
             getDistToTarget = Vector3.Distance(transform.position,target.transform.position);   // Get dist between point A and B
             
-            Debug.DrawLine(target.transform.position, transform.position, Color.white);
-            if (getDistToTarget <= nearestDist)                                                 // If new object is closer than previous, becomes the new closest target
+            
+            if (getDistToTarget <= nearestDist && isVis)                                                 // If new object is closer than previous, becomes the new closest target
             {
                 nearestDist = getDistToTarget;
                 closestTarget = target.GetComponent<Transform>();
                 
             }
 
-            if (closestTarget != null && nearestDist < range)      // If not null finalize the target
+            if (closestTarget != null && nearestDist < range && isVis)      // If not null finalize the target
             {
                 myTarget = closestTarget.transform;
                 
@@ -114,7 +130,7 @@ public class Turret : MonoBehaviour
                 myTarget = null;                // NOTE this does not seem to work, target is reset at IEnumerator
                 Debug.Log("TrackTestNull");
             }
-            Debug.Log("nearest target " + nearestDist + " " + closestTarget + " " + myTarget);
+         //   Debug.Log("nearest target " + nearestDist + " " + closestTarget + " " + myTarget);
 
             
 
@@ -128,6 +144,11 @@ public class Turret : MonoBehaviour
         }
 
         
+
+    }
+
+    void CheckTargetLOS()
+    {
 
     }
 
