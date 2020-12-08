@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777449138709731479}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -19.314}
+  m_LocalPosition: {x: -10, y: -10, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 0.51157}
   m_Children: []
   m_Father: {fileID: 6754319367986553892}
@@ -549,7 +549,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998894647893334467}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -33}
+  m_LocalPosition: {x: -10, y: -10, z: -24.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6754319367986553892}
@@ -6859,7 +6859,7 @@ MonoBehaviour:
       m_Anchor: 9
     m_Material: {fileID: 0}
     m_SubmeshIndex: 0
-    m_ManualUV: 0
+    m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
   - m_Indexes: 0c0000000d0000000e0000000d0000000f0000000e000000
@@ -6927,7 +6927,7 @@ MonoBehaviour:
       m_Anchor: 9
     m_Material: {fileID: 0}
     m_SubmeshIndex: 0
-    m_ManualUV: 0
+    m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
   - m_Indexes: 1e0000001d0000001c0000001e0000001f0000001d000000
@@ -6944,7 +6944,7 @@ MonoBehaviour:
       m_Anchor: 9
     m_Material: {fileID: 0}
     m_SubmeshIndex: 0
-    m_ManualUV: 0
+    m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
   - m_Indexes: 220000002100000020000000220000002300000021000000
@@ -6961,7 +6961,7 @@ MonoBehaviour:
       m_Anchor: 9
     m_Material: {fileID: 0}
     m_SubmeshIndex: 0
-    m_ManualUV: 0
+    m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
   - m_Indexes: 260000002500000024000000260000002700000025000000
@@ -6978,7 +6978,7 @@ MonoBehaviour:
       m_Anchor: 9
     m_Material: {fileID: 0}
     m_SubmeshIndex: 0
-    m_ManualUV: 0
+    m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
   m_SharedVertices:
@@ -6996,46 +6996,46 @@ MonoBehaviour:
   - m_Vertices: 0f000000100000001e00000027000000
   m_SharedTextures: []
   m_Positions:
-  - {x: 2, y: 2, z: 0}
-  - {x: 18, y: 2, z: 0}
-  - {x: 2, y: 18, z: 0}
-  - {x: 18, y: 18, z: 0}
-  - {x: 20, y: 0, z: -2}
-  - {x: 20, y: 0, z: -20}
-  - {x: 20, y: 20, z: -2}
-  - {x: 20, y: 20, z: -20}
-  - {x: 20, y: 0, z: -20}
-  - {x: 0, y: 0, z: -20}
-  - {x: 20, y: 20, z: -20}
-  - {x: 0, y: 20, z: -20}
-  - {x: 0, y: 0, z: -20}
-  - {x: 0, y: 0, z: -2}
-  - {x: 0, y: 20, z: -20}
-  - {x: 0, y: 20, z: -2}
-  - {x: 0, y: 20, z: -2}
-  - {x: 20, y: 20, z: -2}
-  - {x: 0, y: 20, z: -20}
-  - {x: 20, y: 20, z: -20}
-  - {x: 0, y: 0, z: -20}
-  - {x: 20, y: 0, z: -20}
-  - {x: 0, y: 0, z: -2}
-  - {x: 20, y: 0, z: -2}
-  - {x: 2, y: 2, z: 0}
-  - {x: 18, y: 2, z: 0}
-  - {x: 0, y: 0, z: -2}
-  - {x: 20, y: 0, z: -2}
-  - {x: 2, y: 18, z: 0}
-  - {x: 2, y: 2, z: 0}
-  - {x: 0, y: 20, z: -2}
-  - {x: 0, y: 0, z: -2}
-  - {x: 18, y: 2, z: 0}
-  - {x: 18, y: 18, z: 0}
-  - {x: 20, y: 0, z: -2}
-  - {x: 20, y: 20, z: -2}
-  - {x: 18, y: 18, z: 0}
-  - {x: 2, y: 18, z: 0}
-  - {x: 20, y: 20, z: -2}
-  - {x: 0, y: 20, z: -2}
+  - {x: -8, y: -8, z: 10}
+  - {x: 8, y: -8, z: 10}
+  - {x: -8, y: 8, z: 10}
+  - {x: 8, y: 8, z: 10}
+  - {x: 10, y: -10, z: 8}
+  - {x: 10, y: -10, z: -10}
+  - {x: 10, y: 10, z: 8}
+  - {x: 10, y: 10, z: -10}
+  - {x: 10, y: -10, z: -10}
+  - {x: -10, y: -10, z: -10}
+  - {x: 10, y: 10, z: -10}
+  - {x: -10, y: 10, z: -10}
+  - {x: -10, y: -10, z: -10}
+  - {x: -10, y: -10, z: 8}
+  - {x: -10, y: 10, z: -10}
+  - {x: -10, y: 10, z: 8}
+  - {x: -10, y: 10, z: 8}
+  - {x: 10, y: 10, z: 8}
+  - {x: -10, y: 10, z: -10}
+  - {x: 10, y: 10, z: -10}
+  - {x: -10, y: -10, z: -10}
+  - {x: 10, y: -10, z: -10}
+  - {x: -10, y: -10, z: 8}
+  - {x: 10, y: -10, z: 8}
+  - {x: -8, y: -8, z: 10}
+  - {x: 8, y: -8, z: 10}
+  - {x: -10, y: -10, z: 8}
+  - {x: 10, y: -10, z: 8}
+  - {x: -8, y: 8, z: 10}
+  - {x: -8, y: -8, z: 10}
+  - {x: -10, y: 10, z: 8}
+  - {x: -10, y: -10, z: 8}
+  - {x: 8, y: -8, z: 10}
+  - {x: 8, y: 8, z: 10}
+  - {x: 10, y: -10, z: 8}
+  - {x: 10, y: 10, z: 8}
+  - {x: 8, y: 8, z: 10}
+  - {x: -8, y: 8, z: 10}
+  - {x: 10, y: 10, z: 8}
+  - {x: -10, y: 10, z: 8}
   m_Textures0:
   - {x: -2, y: 2}
   - {x: -18, y: 2}

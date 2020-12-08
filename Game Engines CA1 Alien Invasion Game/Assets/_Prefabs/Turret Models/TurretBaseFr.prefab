@@ -5976,6 +5976,13 @@ MonoBehaviour:
   isUnit: 0
   isPlayer: 0
   isStructure: 0
+  isDead: 0
+  destroyImmOnDeath: 0
+  playDeathEffectNow: 0
+  deathEffect: {fileID: 0}
+  subExplosions: {fileID: 0}
+  subExpRange: 10
+  instantiateOnPos: {fileID: 0}
 --- !u!1001 &2127331356444460135
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public class CityGenerator : MonoBehaviour
     [Range(0, 100)]
     public int spawnChance;
     public bool rngOn;
+    private int rngVal;
 
     [Header("Number Of Objects & Spacing")]
     Vector3 myPos;
@@ -41,26 +42,34 @@ public class CityGenerator : MonoBehaviour
             for (int j = 0; j < loopZ; j++)
             {
 
-                float xPos = transform.position.x + (baseX * i);
-                float zPos = transform.position.z + (baseZ * j);
+                if (rngOn) rngVal = Random.Range(0,100);
 
-                Vector3 rayPos = new Vector3(xPos, 500, zPos);
-                LayerMask mask = LayerMask.GetMask("Ground");
-
-                RaycastHit hit;
-
-                Debug.Log("SPAWN");
-                if (Physics.Raycast(rayPos, Vector3.down, out hit, 1000f, ~mask))
+                if (rngVal < spawnChance || rngOn != true)
                 {
-                    //   var pickBlock = Random.Range(0,myGenTable.bodyModules.Length);
-                    
-                    
+                    float xPos = transform.position.x + (baseX * i);
+                    float zPos = transform.position.z + (baseZ * j);
 
-                //    GenerateCityCluster();
+                    Vector3 rayPos = new Vector3(xPos, 500, zPos);
+                    LayerMask mask = LayerMask.GetMask("Ground");
 
-                    Instantiate(buildingType, new Vector3(xPos,hit.point.y,zPos), Quaternion.identity);
+                    RaycastHit hit;
+
+                    Debug.Log("SPAWN");
+                    if (Physics.Raycast(rayPos, Vector3.down, out hit, 1000f, ~mask))
+                    {
+                        //   var pickBlock = Random.Range(0,myGenTable.bodyModules.Length);
+
+
+
+                        //    GenerateCityCluster();
+
+                        Instantiate(buildingType, new Vector3(xPos, hit.point.y, zPos), Quaternion.identity);
+
+                    }
 
                 }
+
+                
 
 
             }

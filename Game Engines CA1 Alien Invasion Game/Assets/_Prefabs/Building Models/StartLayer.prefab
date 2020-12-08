@@ -327,6 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myBuilding: {fileID: 11400000, guid: e073cda017dc9904cb96feb6befb4029, type: 2}
-  minHeight: 1
-  maxHeight: 10
+  myFoundation: {fileID: 0}
+  minHeight: 2
+  maxHeight: 4
   ySpacing: 50

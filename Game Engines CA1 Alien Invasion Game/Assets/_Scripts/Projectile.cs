@@ -173,12 +173,30 @@ public class Projectile : MonoBehaviour
 
     void ModeHoming()
     {
+        if (myHomingTarget != null)
+        {
+            myRB.velocity = transform.forward * speed;
 
-        myRB.velocity = transform.forward * speed;
+            var targetRot = Quaternion.LookRotation(myHomingTarget.position - transform.position);
 
-        var targetRot = Quaternion.LookRotation(myHomingTarget.position - transform.position);
+            myRB.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRot, rotSpeed * Time.deltaTime));
+        }
+        else
+        {
+            for (int i = 0; i < effectsOnHit.Length; i++)
+            {
+                Instantiate(effectsOnHit[i], transform.position, Quaternion.identity);
+            }
 
-        myRB.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRot, rotSpeed * Time.deltaTime));
+            for (int i = 0; i < leaveExEffectsOnHit.Length; i++)
+            {
+                leaveExEffectsOnHit[i].transform.parent = null;
+            }
+
+            Destroy(gameObject);
+        }
+
+        
     //    myRB.MoveRotation(Quaternion.LookRotation(Vector3.forward, Vector3.up));
 
         #region 2D homing?

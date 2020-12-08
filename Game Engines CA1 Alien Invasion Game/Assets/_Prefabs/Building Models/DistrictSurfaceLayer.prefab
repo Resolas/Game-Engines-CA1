@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: {fileID: 3039478209951098290, guid: 48b678ba2239d634caee071f3165a122, type: 3}
-  spawnChance: 0
-  rngOn: 0
+  spawnChance: 35
+  rngOn: 1
   loopX: 10
   loopZ: 10
   baseX: 45

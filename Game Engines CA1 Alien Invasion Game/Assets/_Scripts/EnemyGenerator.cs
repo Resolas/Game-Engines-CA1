@@ -15,6 +15,8 @@ public class EnemyGenerator : MonoBehaviour
     [Header("Generation Settings")]
     public int frontMaxLength = 5;
     public int rearMaxLength = 5;
+    public int frontMinLength = 3;
+    public int rearMinLength = 3;
 
     public EnemyPrefabTable myGenTable;
 
@@ -22,8 +24,8 @@ public class EnemyGenerator : MonoBehaviour
 
     void GenerateShip()
     {
-        int frontRng = Random.Range(2,frontMaxLength);
-        int rearRng = Random.Range(2,rearMaxLength);
+        int frontRng = Random.Range(frontMinLength,frontMaxLength);
+        int rearRng = Random.Range(rearMinLength,rearMaxLength);
 
         float xPos = transform.position.x;
         float yPos = transform.position.y;

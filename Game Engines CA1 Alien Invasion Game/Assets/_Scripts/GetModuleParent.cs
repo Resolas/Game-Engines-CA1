@@ -20,9 +20,9 @@ public class GetModuleParent : MonoBehaviour
     {
         if (moduleHealth <= 0 || myShipCoreHealth.health <= 0)
         {
-            Destroy(gameObject);
+            
             if (deathEffect != null) Instantiate(deathEffect,transform.position,Quaternion.identity);
-
+            Destroy(gameObject);
         }
 
         

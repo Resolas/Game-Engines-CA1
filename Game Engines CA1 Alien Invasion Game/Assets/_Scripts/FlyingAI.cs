@@ -82,7 +82,7 @@ public class FlyingAI : MonoBehaviour
     void FireWeaponsSystems()
     {
         Debug.Log(inAttackRange);
-        if (inAttackRange <= range)
+        if (inAttackRange <= range && myTarget != null)
         {
 
             for (int i = 0; i < myWeapons.Length; i++)
