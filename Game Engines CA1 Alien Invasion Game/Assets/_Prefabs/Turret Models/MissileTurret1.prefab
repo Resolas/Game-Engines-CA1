@@ -2957,7 +2957,7 @@ MonoBehaviour:
   myWeapons:
   - {fileID: 2756756801250443803}
   myGunArms: []
-  range: 500
+  range: 300
   isFriendly: 0
   getDistToTarget: 0
   isRot360: 1
@@ -2983,4 +2983,4 @@ MonoBehaviour:
   myProjectile: {fileID: 3889036696500912138, guid: 11d4d6e08c285b04e8348c4008ee999d, type: 3}
   maxCooldown: 0.5
   accuracy: 3
-  staggerFire: 0
+  staggerFire: 1

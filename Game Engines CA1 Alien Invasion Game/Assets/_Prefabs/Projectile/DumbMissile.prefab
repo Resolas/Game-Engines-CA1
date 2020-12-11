@@ -7755,10 +7755,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069f44004b0b0ce4aba2e2fefbf91fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  explodeDamage: 1
+  damage: 35
+  explodeDamage: 15
   explodeRadius: 10
-  speed: 60
+  speed: 120
   rotSpeed: 100
   isConSpeed: 0
   lifetime: 5
@@ -7766,7 +7766,7 @@ MonoBehaviour:
   isExplosive: 1
   isMelee: 0
   isHoming: 0
-  isTrigger: 0
+  isTrigger: 1
   myHomingTarget: {fileID: 0}
   effectsOnHit:
   - {fileID: 6276477726177593333, guid: 8fb859ef675a2584b937483ea1d2fb5c, type: 3}

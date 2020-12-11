@@ -880,6 +880,7 @@ GameObject:
   - component: {fileID: 5530871818475830674}
   - component: {fileID: 5530871818475830669}
   - component: {fileID: 7052660382761747567}
+  - component: {fileID: 304698583725349175}
   m_Layer: 0
   m_Name: ShipBodyMod2
   m_TagString: Enemy
@@ -902,6 +903,8 @@ Transform:
   - {fileID: 6361292974882301609}
   - {fileID: 754301877168682459}
   - {fileID: 5951920101043690385}
+  - {fileID: 966507359308076524}
+  - {fileID: 8630915575307856483}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1771,6 +1774,84 @@ MonoBehaviour:
   myShipCoreHealth: {fileID: 0}
   moduleHealth: 50
   deathEffect: {fileID: 6276477726177593333, guid: 8fb859ef675a2584b937483ea1d2fb5c, type: 3}
+--- !u!114 &304698583725349175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5530871818475830668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbeff05c7d713354eabd0c4e39af52d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  getSpawnPos:
+  - {fileID: 966507359308076524}
+  - {fileID: 8630915575307856483}
+  myTurrets:
+  - {fileID: 6363463195784275851, guid: a62b77a2e44fa214ea8a10c140fe1966, type: 3}
+  - {fileID: 3715175719884174574, guid: 0d6964257bd38a044ad191f72e4b7f06, type: 3}
+--- !u!1 &6309939857857882819
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8630915575307856483}
+  m_Layer: 0
+  m_Name: SpawnPoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8630915575307856483
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6309939857857882819}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -30, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5530871818475830673}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6852781145676210063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 966507359308076524}
+  m_Layer: 0
+  m_Name: SpawnPoint1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &966507359308076524
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852781145676210063}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 30, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5530871818475830673}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1554096817005801834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1793,6 +1874,10 @@ PrefabInstance:
     - target: {fileID: 3715175719884174574, guid: 0d6964257bd38a044ad191f72e4b7f06, type: 3}
       propertyPath: m_Name
       value: HomingLaserTurretHead (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715175719884174574, guid: 0d6964257bd38a044ad191f72e4b7f06, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5118399380243966715, guid: 0d6964257bd38a044ad191f72e4b7f06, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1871,6 +1956,10 @@ PrefabInstance:
     - target: {fileID: 3715175719884174574, guid: 0d6964257bd38a044ad191f72e4b7f06, type: 3}
       propertyPath: m_Name
       value: HomingLaserTurretHead
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715175719884174574, guid: 0d6964257bd38a044ad191f72e4b7f06, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5118399380243966715, guid: 0d6964257bd38a044ad191f72e4b7f06, type: 3}
       propertyPath: m_LocalPosition.x

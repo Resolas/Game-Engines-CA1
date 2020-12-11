@@ -21145,7 +21145,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: dc14a6ab264c8404d8971634c844fe7c, type: 2}
   - {fileID: 2100000, guid: 4df8e934d508deb47a757e5fd41eab40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -21206,7 +21206,7 @@ MonoBehaviour:
   myWeapons:
   - {fileID: 2021755231676421126}
   myGunArms: []
-  range: 250
+  range: 300
   isFriendly: 0
   getDistToTarget: 0
   isRot360: 1

@@ -1550,13 +1550,13 @@ MonoBehaviour:
   myWeapons:
   - {fileID: 2410716410322801576}
   myGunArms: []
-  range: 250
+  range: 275
   isFriendly: 0
   getDistToTarget: 0
   isRot360: 1
-  findEnemy: 0
-  findFriendly: 1
-  findPlayer: 1
+  findEnemy: 1
+  findFriendly: 0
+  findPlayer: 0
   findStructure: 0
 --- !u!1 &7101084332384673782
 GameObject:

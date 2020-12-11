@@ -4827,7 +4827,6 @@ GameObject:
   - component: {fileID: 7567445830930412242}
   - component: {fileID: -8677758466985563123}
   - component: {fileID: -8953035212740699446}
-  - component: {fileID: 7647821084387637757}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -6163,10 +6162,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069f44004b0b0ce4aba2e2fefbf91fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
-  explodeDamage: 1
-  explodeRadius: 1
-  speed: 1
+  damage: 6
+  explodeDamage: 4
+  explodeRadius: 2
+  speed: 200
   rotSpeed: 100
   isConSpeed: 0
   lifetime: 5
@@ -6174,7 +6173,7 @@ MonoBehaviour:
   isExplosive: 1
   isMelee: 0
   isHoming: 0
-  isTrigger: 0
+  isTrigger: 1
   myHomingTarget: {fileID: 0}
   effectsOnHit: []
   leaveExEffectsOnHit:
@@ -6195,32 +6194,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7647821084387637757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7567445830930412241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 069f44004b0b0ce4aba2e2fefbf91fe6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  explodeDamage: 3
-  explodeRadius: 5
-  speed: 100
-  rotSpeed: 100
-  isConSpeed: 0
-  lifetime: 5
-  hitMultiple: 0
-  isExplosive: 0
-  isMelee: 0
-  isHoming: 0
-  isTrigger: 0
-  myHomingTarget: {fileID: 0}
-  effectsOnHit:
-  - {fileID: 4794017598366529234, guid: 9556cde50f3c0124c9ee841fcf2b1738, type: 3}
-  leaveExEffectsOnHit:
-  - {fileID: 1473629294998715145}
