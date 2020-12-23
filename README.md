@@ -39,6 +39,12 @@ how the spawning will work is that the enemy ships will first spawn in as a sing
 
 ```
 
+Boss Generation ---
+While the boss has no script on its own it relies mainly on turrets and other existing scripts that lets it do things, I used a simple coroutine script that will slowly generate overtime generate all the boss' weapons available to it in the prefab tables
+``` C#
+
+```
+
 Turrets ---
 The turrets use 'Turret' and 'FiringSys' Scripts, in which together allows me to create various turret types and weapons, firstly the turret checks for viable tags in targets, when an object is in its overlapsphere, it will check for its tag and what this turret is looking for e.g 'if (target.CompareTag("Enemy") && findEnemy != true) continue;' if the findEnemy is not true it will ignore and skip that iteration and move to the next until find______ bool is satisfied and runs the full code, it will also check for LOS if its not in LOS it will skip iteration etc, as for the FiringSys is where we setup our weapons, it is also used in player mechs and fixed weapons, once fully setup, drag it to the Turret scripts 'myWeapons[]' array, which then uses that to fire with.
 ``` C#
@@ -59,7 +65,7 @@ First thing I'm most proud of is getting turrets to work mostly the way I wanted
 
 Second
 
-Third and last thing would be the explosion effects I've worked on with the Unity's Shuriken particle system
+Third and last thing would be the explosion effects I've worked on with the Unity's Shuriken particle system, which is supposed to bring the wow factor to the visuals instead of using color changing materials to do so, adding in the post process really made them stand out.
 
 # Proposal submitted earlier can go here
 # Game-Engines-CA1        
