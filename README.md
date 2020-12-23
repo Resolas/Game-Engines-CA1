@@ -1,8 +1,12 @@
-# Game-Engines-CA1
+# Game-Engines-CA1        Alien Invasion Game
 
-Game Visualizer Assignment for Game Engines  -------------------------     Student Name - Munfung Look -  Student Number - C18510403  
+Game Visualizer Assignment for Game Engines  -------------------------     
+Student Name - Munfung Look -  
+Student Number - C18510403  
 Class: DT508
+Module: Game Engines 1
 
+# Description
 
 A playable game visualizer, with an alien invasion setting laying siege over upon a futuristic city in the night sky, lasers will be fired in every direction creating a massive laser lightshow and fantastical explosions in the night sky, with that in mind the game can be left on without being played, and have the background play by itself, with an ongoing war between the city and the extraterrestrial invaders
 
@@ -45,4 +49,20 @@ MINOR/POLISH ITEMS:
 HOPES & DREAMS: (Only implement if all of the above is done and/or system hardware allows it)
 - Procedurally Generated Enemy Units
 - City Physics
+
+# Instructions For Use
+# Movement Control
+- WASD keys - to move
+- Space & Ctrl - to ascend/jump & descend
+- Space - if on Ground Jump, In Mid Air to start flying
+
+# Weapon Control
+- Hold Left Click - fire laser
+- Hold Right Click - fire missile
+- Hold Q & look at something  - fire guided missiles
+
+
+
+
+
 
