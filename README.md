@@ -29,19 +29,37 @@ Overall the game will be largely built mainly with a city generator code, genera
 
 City Generation ---
 First of all, it starts with mainland generator which creates the height layers and district surfaces which in turn generates the cities, it will use raycast to hit a position to spawn the baseTowers that generates the building, both mainland generator and district/city generator uses the same script.
+``` C#
+test
+```
 
 Enemy Spawning ---
 how the spawning will work is that the enemy ships will first spawn in as a single ship core module, it is essentially derived from the city tower generation script modified to build a ship instead, which in turn generates the other available modules in its referenced scriptable object generation table, which essentially allows endless configurations of new ships to spawn in, its generation settings can be edited in its script or prefab, adjusting its maximum length, give a different generation table etc...
+``` C#
+
+```
 
 Turrets ---
 The turrets use 'Turret' and 'FiringSys' Scripts, in which together allows me to create various turret types and weapons, firstly the turret checks for viable tags in targets, when an object is in its overlapsphere, it will check for its tag and what this turret is looking for e.g 'if (target.CompareTag("Enemy") && findEnemy != true) continue;' if the findEnemy is not true it will ignore and skip that iteration and move to the next until find______ bool is satisfied and runs the full code, it will also check for LOS if its not in LOS it will skip iteration etc, as for the FiringSys is where we setup our weapons, it is also used in player mechs and fixed weapons, once fully setup, drag it to the Turret scripts 'myWeapons[]' array, which then uses that to fire with.
+``` C#
+
+```
 
 Player ---
 --- See instructions to work: how it works is that it uses rigidbody.addrelativeforce to navigate its surroundings, when its on ground the player has to press space then once in the air space again to start flying which turns gravity off for the rigidbody, as for weapons control it uses raycast from the center of the camera marked by the crosshair, to tell where the assigned gunArms to fire and gets target data such as transform position for homing missiles to work.
+``` C#
+
+```
 
 # References
 
 # What I'm most Pround of in the Assignment
+
+First thing I'm most proud of is getting turrets to work mostly the way I wanted them to, but on the flipside with the nature of the project with so many objects that targetable caused intense lagspikes, I would definately try and improve on the code and use it for future projects
+
+Second
+
+Third and last thing would be the explosion effects I've worked on with the Unity's Shuriken particle system
 
 # Proposal submitted earlier can go here
 # Game-Engines-CA1        
@@ -93,8 +111,6 @@ MINOR/POLISH ITEMS:
 HOPES & DREAMS: (Only implement if all of the above is done and/or system hardware allows it)
 - Procedurally Generated Enemy Units
 - City Physics
-
-
 
 
 
