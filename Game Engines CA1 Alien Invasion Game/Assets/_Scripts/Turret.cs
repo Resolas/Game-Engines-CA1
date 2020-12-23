@@ -22,7 +22,7 @@ public class Turret : MonoBehaviour
     public bool isFriendly = false;
     public float getDistToTarget;
     public bool isRot360 = true;
-
+    public bool optimize = true; // stops checking when it has a target
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -78,6 +78,7 @@ public class Turret : MonoBehaviour
     {
 
         Collider[] targets = Physics.OverlapSphere(transform.position,range);
+        
 
         float nearestDist = Mathf.Infinity;
         Transform closestTarget = null;
@@ -103,6 +104,7 @@ public class Turret : MonoBehaviour
             {
                 isVis = false;
                 Debug.DrawLine(target.transform.position, transform.position, Color.red);
+                continue;
             }
 
 
@@ -147,8 +149,29 @@ public class Turret : MonoBehaviour
 
     }
 
-    void CheckTargetLOS()
+
+    void CheckCurrentTarget()
     {
+
+        // LOS
+        bool isVis;
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, myTarget.position - transform.position, out hit) && hit.transform.tag == myTarget.transform.tag)
+        {
+            isVis = true;
+            Debug.DrawLine(myTarget.position, transform.position, Color.green);
+        }
+        else
+        {
+            isVis = false;
+            Debug.DrawLine(myTarget.position, transform.position, Color.red);
+        }
+
+        float checkDist = Vector3.Distance(transform.position,myTarget.position);
+
+        if (checkDist > range || myTarget == null) myTarget = null;
+
 
     }
 
@@ -156,9 +179,32 @@ public class Turret : MonoBehaviour
     {
         while (true)
         {
-            myTarget = null;
-            TrackTarget();
-            yield return new WaitForSeconds(1f);
+            
+            if (optimize)
+            {
+
+                if (myTarget == true)
+                {
+                    CheckCurrentTarget();
+
+                    if (myTarget == null)
+                    {
+                        TrackTarget();
+                    }
+                }
+                else
+                {
+                    TrackTarget();
+                }
+
+            }
+            else
+            {
+                myTarget = null;
+                TrackTarget();
+            }
+            
+            yield return new WaitForSeconds(2f);
         }
        
     }

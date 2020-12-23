@@ -1534,6 +1534,7 @@ MonoBehaviour:
   maxCooldown: 0.2
   accuracy: 5
   staggerFire: 0
+  getTargetData: 1
 --- !u!114 &529791910736936284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1554,6 +1555,7 @@ MonoBehaviour:
   isFriendly: 0
   getDistToTarget: 0
   isRot360: 1
+  optimize: 1
   findEnemy: 1
   findFriendly: 0
   findPlayer: 0

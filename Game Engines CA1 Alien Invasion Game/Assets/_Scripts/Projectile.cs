@@ -78,7 +78,7 @@ public class Projectile : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
 
-        if (collision.collider.CompareTag("Player") || collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Friendly") || collision.collider.CompareTag("Structure"))
+        if (collision.collider.CompareTag("Player") || collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Friendly") || collision.collider.CompareTag("Structure") && collision.collider.GetComponent<UniHPSys>() != null)
         {
 
             UniHPSys otherHealth = collision.collider.GetComponent<UniHPSys>();
@@ -106,7 +106,7 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Projectile") && other.GetComponent<Collider>().isTrigger) return;     // Ignores collision of both triggers due to RBs
 
-        if (other.CompareTag("Player") || other.CompareTag("Enemy") || other.CompareTag("Friendly") || other.CompareTag("Structure"))
+        if (other.CompareTag("Player") || other.CompareTag("Enemy") || other.CompareTag("Friendly") || other.CompareTag("Structure") && other.GetComponent<UniHPSys>() != null)
         {
 
             UniHPSys otherHealth = other.GetComponent<UniHPSys>();

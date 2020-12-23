@@ -21210,6 +21210,7 @@ MonoBehaviour:
   isFriendly: 0
   getDistToTarget: 0
   isRot360: 1
+  optimize: 1
   findEnemy: 0
   findFriendly: 1
   findPlayer: 1
@@ -21232,3 +21233,4 @@ MonoBehaviour:
   maxCooldown: 2
   accuracy: 0.5
   staggerFire: 0
+  getTargetData: 1

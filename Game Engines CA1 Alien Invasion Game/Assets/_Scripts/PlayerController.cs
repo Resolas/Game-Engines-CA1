@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
         GroundChecker();
         Movement();
+        FireWeaponry();
         MouseLock();
     }
 

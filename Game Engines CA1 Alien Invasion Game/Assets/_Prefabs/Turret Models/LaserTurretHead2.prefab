@@ -13589,6 +13589,7 @@ MonoBehaviour:
   isFriendly: 0
   getDistToTarget: 0
   isRot360: 1
+  optimize: 1
   findEnemy: 0
   findFriendly: 1
   findPlayer: 1
@@ -13612,6 +13613,7 @@ MonoBehaviour:
   maxCooldown: 0.3
   accuracy: 4
   staggerFire: 1
+  getTargetData: 1
 --- !u!1 &6736916539227292509
 GameObject:
   m_ObjectHideFlags: 0

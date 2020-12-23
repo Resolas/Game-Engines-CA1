@@ -21,35 +21,41 @@ public class FiringSys : MonoBehaviour
     public float accuracy = 0.5f;
     public bool staggerFire = false;
     private int stagFireWep = 0;
+    public bool getTargetData = true;
 
     private Turret getTarget;    // Transfers the Target from Turret AIs to the Projectile in case it is guided
+    Transform setTarget;       // Sends the target data to this value
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (getTarget != null) setTarget = getTarget.myTarget;
         Cooling();
     }
 
     public void FireWeapons()       // To be called on other scripts
     {
+        Debug.Log("FIRE + " + gameObject);
         if (cooldown <= 0)
         {
-
-            Transform setTarget = getTarget.myTarget;       // Sends the target data to this value
+            
+            
             if (staggerFire != true)
             {
                 for (int i = 0; i < myFirepoints.Length; i++)
                 {
 
                     GameObject projectile = Instantiate(myProjectile, myFirepoints[i].transform.position, myFirepoints[i].transform.rotation * Quaternion.Euler(Random.Range(-accuracy, accuracy), Random.Range(-accuracy, accuracy), Random.Range(-accuracy, accuracy)));
-                    projectile.GetComponent<Projectile>().myHomingTarget = setTarget;       // The projectile gets the target data and uses it if it can seek
+                    if (setTarget != null) projectile.GetComponent<Projectile>().myHomingTarget = setTarget;       // The projectile gets the target data and uses it if it can seek
+
                 }
             }
             else
             {
                 int max = myFirepoints.Length;
                 GameObject projectile = Instantiate(myProjectile, myFirepoints[stagFireWep].transform.position, myFirepoints[stagFireWep].transform.rotation * Quaternion.Euler(Random.Range(-accuracy, accuracy), Random.Range(-accuracy, accuracy), Random.Range(-accuracy, accuracy)));
-                projectile.GetComponent<Projectile>().myHomingTarget = setTarget;       // The projectile gets the target data and uses it if it can seek
+                if (setTarget != null) projectile.GetComponent<Projectile>().myHomingTarget = setTarget;       // The projectile gets the target data and uses it if it can seek
+
 
                 stagFireWep++;
                 if (stagFireWep >= max) stagFireWep = 0;
