@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(1)) myWeaponSystems[1].FireWeapons();
 
 
-        if (Input.GetKeyDown(KeyCode.Q)) myWeaponSystems[2].FireWeapons();
+        if (Input.GetKey(KeyCode.Q)) myWeaponSystems[2].FireWeapons();
 
 
     }

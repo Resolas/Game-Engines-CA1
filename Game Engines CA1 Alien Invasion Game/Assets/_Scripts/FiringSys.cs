@@ -24,7 +24,7 @@ public class FiringSys : MonoBehaviour
     public bool getTargetData = true;
 
     private Turret getTarget;    // Transfers the Target from Turret AIs to the Projectile in case it is guided
-    Transform setTarget;       // Sends the target data to this value
+    public Transform setTarget;       // Sends the target data to this value
 
     // Update is called once per frame
     void FixedUpdate()

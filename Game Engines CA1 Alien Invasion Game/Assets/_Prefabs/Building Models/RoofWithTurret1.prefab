@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 727755816712485340}
   - component: {fileID: 727755816712485343}
   - component: {fileID: -1561795801116365494}
+  - component: {fileID: -2133745310151817597}
   m_Layer: 0
   m_Name: RoofWithTurret1
   m_TagString: Structure
@@ -14928,6 +14929,18 @@ MonoBehaviour:
   subExplosions: {fileID: 0}
   subExpRange: 10
   instantiateOnPos: {fileID: 0}
+--- !u!114 &-2133745310151817597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727755816712485342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3bdca333d29e754394e27045fe60019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7282138031206553042
 PrefabInstance:
   m_ObjectHideFlags: 0

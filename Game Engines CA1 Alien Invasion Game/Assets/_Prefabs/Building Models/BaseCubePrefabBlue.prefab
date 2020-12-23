@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 803633520750424070}
   - component: {fileID: 8168717566783048876}
   - component: {fileID: -293662737531973892}
+  - component: {fileID: -378975500634467177}
   m_Layer: 0
   m_Name: BaseCubePrefabBlue
   m_TagString: Structure
@@ -21519,3 +21520,15 @@ MonoBehaviour:
   subExplosions: {fileID: 4794017598366529234, guid: 9556cde50f3c0124c9ee841fcf2b1738, type: 3}
   subExpRange: 10
   instantiateOnPos: {fileID: 0}
+--- !u!114 &-378975500634467177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8494203184271684588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3bdca333d29e754394e27045fe60019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

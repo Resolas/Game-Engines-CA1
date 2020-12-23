@@ -11,10 +11,11 @@ public class BuildingCollapse : MonoBehaviour
     void Start()
     {
         myHPSys = GetComponent<UniHPSys>();
-        StartCoroutine(CheckBottom());
+     //   StartCoroutine(CheckBottom());
     }
 
     private UniHPSys myHPSys;
+    
 
     private float rayDist = 10f;
     IEnumerator CheckBottom()
@@ -23,10 +24,17 @@ public class BuildingCollapse : MonoBehaviour
         while (true)
         {
             Vector3 offset = new Vector3(0,-10,0);
-            if (Physics.Raycast(transform.position + offset, Vector3.down, rayDist))
+            RaycastHit hit;
+
+
+            if (Physics.Raycast(transform.position + offset, Vector3.down, out hit ,rayDist) != true)
             {
-                Debug.Log("DESTROY ABOVE");
-                myHPSys.isDead = true;
+                if (hit.collider.CompareTag("Structure") != true)
+                {
+                    Debug.Log("DESTROY ABOVE");
+                    myHPSys.isDead = true;
+                }
+                
             }
             Debug.Log("RUN CO TEST");
             Debug.DrawLine(transform.position + offset, transform.position + offset + new Vector3(0,-rayDist,0),Color.green);
