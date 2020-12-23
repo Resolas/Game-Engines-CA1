@@ -22,6 +22,7 @@ public class Turret : MonoBehaviour
     public bool isFriendly = false;
     public float getDistToTarget;
     public bool isRot360 = true;
+    public bool isFixed = false;
     public bool optimize = true; // stops checking when it has a target
     // Update is called once per frame
     void FixedUpdate()
@@ -45,7 +46,7 @@ public class Turret : MonoBehaviour
                     myGunArms[i].transform.LookAt(myTarget);
                 }
             }
-            else
+            else if (isFixed != true)
             {
                 transform.LookAt(myTarget);
             }
@@ -209,7 +210,7 @@ public class Turret : MonoBehaviour
        
     }
 
-
+    /*
     void Shoot()
     {
 
@@ -220,7 +221,7 @@ public class Turret : MonoBehaviour
         }
 
     }
-
+    */
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

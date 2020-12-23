@@ -260,7 +260,7 @@ MonoBehaviour:
   damage: 5
   explodeDamage: 0
   explodeRadius: 0
-  speed: 100
+  speed: 200
   rotSpeed: 100
   isConSpeed: 1
   lifetime: 5

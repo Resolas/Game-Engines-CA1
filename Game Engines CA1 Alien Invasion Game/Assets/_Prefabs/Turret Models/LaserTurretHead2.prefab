@@ -13589,7 +13589,7 @@ MonoBehaviour:
   isFriendly: 0
   getDistToTarget: 0
   isRot360: 1
-  optimize: 1
+  optimize: 0
   findEnemy: 0
   findFriendly: 1
   findPlayer: 1
@@ -13614,6 +13614,7 @@ MonoBehaviour:
   accuracy: 4
   staggerFire: 1
   getTargetData: 1
+  setTarget: {fileID: 0}
 --- !u!1 &6736916539227292509
 GameObject:
   m_ObjectHideFlags: 0

@@ -19829,9 +19829,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotYCam: {fileID: 8571641525821770782}
-  speed: 1000
-  rotSpeed: 50
-  jumpPower: 10
+  speed: 4000
+  rotSpeed: 80
+  jumpPower: 40
   isFlying: 0
   onGround: 0
   myWeaponSystems:
@@ -19872,7 +19872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecaae6dee170b74fb5a958248a97ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
+  health: 400
   isUnit: 0
   isPlayer: 0
   isStructure: 0
