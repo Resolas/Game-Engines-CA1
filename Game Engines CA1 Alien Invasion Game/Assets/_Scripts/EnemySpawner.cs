@@ -74,8 +74,8 @@ public class EnemySpawner : MonoBehaviour
 
                     for (int j = 0; j < myFlyers.Length; j++)
                     {
-                        float randX = Random.Range(-200, 200);
-                        float randY = Random.Range(0, 500);
+                        float randX = Random.Range(-400, 400);
+                        float randY = Random.Range(0, 400);
                         float randZ = Random.Range(-200, 200);
 
                         Instantiate(myFlyers[j], mySpawnPos[1].position + new Vector3(randX, randY, randZ), transform.rotation);

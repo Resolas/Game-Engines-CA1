@@ -1427,7 +1427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121bdbaf96072f444a8343df349c747f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frontMaxLength: 5
+  frontMaxLength: 8
   rearMaxLength: 5
   frontMinLength: 3
   rearMinLength: 3
@@ -1461,11 +1461,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47159114e4136164e92a4759c001200e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100000
-  altSpeed: 10000
+  speed: 120000
+  altSpeed: 100000
   angSpeed: 10
   isDumbAI: 1
-  maintainAlt: 150
+  maintainAlt: 250
 --- !u!114 &7815377382062024649
 MonoBehaviour:
   m_ObjectHideFlags: 0
