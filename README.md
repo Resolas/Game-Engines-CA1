@@ -39,6 +39,12 @@ how the spawning will work is that the enemy ships will first spawn in as a sing
 
 ```
 
+Boss Generation ---
+While the boss has no script on its own it relies mainly on turrets and other existing scripts that lets it do things, I used a simple coroutine script that will slowly generate overtime generate all the boss' weapons available to it in the prefab tables.
+``` C#
+
+```
+
 Turrets ---
 The turrets use 'Turret' and 'FiringSys' Scripts, in which together allows me to create various turret types and weapons, firstly the turret checks for viable tags in targets, when an object is in its overlapsphere, it will check for its tag and what this turret is looking for e.g 'if (target.CompareTag("Enemy") && findEnemy != true) continue;' if the findEnemy is not true it will ignore and skip that iteration and move to the next until find______ bool is satisfied and runs the full code, it will also check for LOS if its not in LOS it will skip iteration etc, as for the FiringSys is where we setup our weapons, it is also used in player mechs and fixed weapons, once fully setup, drag it to the Turret scripts 'myWeapons[]' array, which then uses that to fire with.
 ``` C#
@@ -53,13 +59,15 @@ Player ---
 
 # References
 
-# What I'm most Pround of in the Assignment
+# What I'm most Proud of in the Assignment
 
-First thing I'm most proud of is getting turrets to work mostly the way I wanted them to, but on the flipside with the nature of the project with so many objects that targetable caused intense lagspikes, I would definately try and improve on the code and use it for future projects
+First thing I'm most proud of is getting turrets to work mostly the way I wanted them to, along with the intent of making the scripts as modular as possible for my usage which I most likely achieved in my perspective, but on the flipside with the nature of the project with so many objects that targetable caused intense lagspikes, I would definately try and improve on the code and use it for future projects
 
-Second
+Second would be the Player controller, as it shows progress towards my ability to make games that I want with that kind of controller other than making generation code and AIs.
 
-Third and last thing would be the explosion effects I've worked on with the Unity's Shuriken particle system
+Third and last thing would be the explosion effects I've worked on with the Unity's Shuriken particle system, which is supposed to bring the wow factor to the visuals instead of using color changing materials to do so, adding in the post process really made them stand out.
+
+Overall, I'm quite proud of my experimentation in this project especially in these areas of code, raycasts, AI, Player Controllers and city/world generation, as I may have worked on them before, it further solidifies my understanding of these concepts, what can be done and cannot, although the scope of the project maybe too big for just one person to handle and left the end product to be rather unrefined or unfinished and has no sound at all, it is an opportunity for me to try out and experiment on as many areas of code, it may imply that the project was never meant to be finished and is supposed to be a means to an end, which is to allow me to code games without a hint of uncertainty.
 
 # Proposal submitted earlier can go here
 # Game-Engines-CA1        
