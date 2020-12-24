@@ -19829,7 +19829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotYCam: {fileID: 8571641525821770782}
-  speed: 4000
+  speed: 10000
   rotSpeed: 80
   jumpPower: 40
   isFlying: 0
@@ -19874,12 +19874,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 400
   isUnit: 0
-  isPlayer: 0
+  isPlayer: 1
   isStructure: 0
   isDead: 0
   destroyImmOnDeath: 0
   playDeathEffectNow: 0
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 6213673556036582812, guid: 4d0659e83e48eee4d9c374911646c81b, type: 3}
   subExplosions: {fileID: 0}
   subExpRange: 10
   instantiateOnPos: {fileID: 0}

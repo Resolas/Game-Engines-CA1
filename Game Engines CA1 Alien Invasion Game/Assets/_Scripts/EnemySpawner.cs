@@ -10,13 +10,13 @@ public class EnemySpawner : MonoBehaviour
 
         StartCoroutine(SpawnShips());
         StartCoroutine(SpawnFlyers());
-     //   StartCoroutine(SpawnBoss());
+        spawnBoss = StartCoroutine(SpawnBoss());
 
     }
     [Header("Unit Spawn Settings")]
     public GameObject myShipCore;
     public GameObject[] myFlyers;
-    public GameObject myBossCore;       // Object is WIP
+    public GameObject myBossCore;       
 
     public Transform[] mySpawnPos = new Transform[3];
 
@@ -75,7 +75,7 @@ public class EnemySpawner : MonoBehaviour
                     for (int j = 0; j < myFlyers.Length; j++)
                     {
                         float randX = Random.Range(-200, 200);
-                        float randY = Random.Range(0, 1000);
+                        float randY = Random.Range(0, 500);
                         float randZ = Random.Range(-200, 200);
 
                         Instantiate(myFlyers[j], mySpawnPos[1].position + new Vector3(randX, randY, randZ), transform.rotation);
@@ -92,10 +92,19 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
+    Coroutine spawnBoss;
+
     IEnumerator SpawnBoss()
     {
         while (true)
         {
+            yield return new WaitForSeconds(60);
+
+            Instantiate(myBossCore, mySpawnPos[2].position, Quaternion.identity);
+
+            StopCoroutine(spawnBoss);
+
+            /*
             if (disableBoss != true)
             {
                 if (curWave == maxWave)
@@ -106,9 +115,9 @@ public class EnemySpawner : MonoBehaviour
                     }
                 }
             }
-            
+            */
 
-            yield return new WaitForSeconds(60);
+            
 
         }
 

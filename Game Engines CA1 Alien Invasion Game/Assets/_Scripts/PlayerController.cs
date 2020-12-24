@@ -87,6 +87,11 @@ public class PlayerController : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
 
+        if (Input.GetMouseButton(0))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
 
     }
 

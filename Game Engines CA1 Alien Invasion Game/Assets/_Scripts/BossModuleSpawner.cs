@@ -7,8 +7,9 @@ public class BossModuleSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnModules());
+        myCoRoutine = StartCoroutine(SpawnModules());
     }
+    Coroutine myCoRoutine;
 
     public int spawnCount = 20;
     public BossPrefabTable myPrefabTable;
@@ -30,8 +31,7 @@ public class BossModuleSpawner : MonoBehaviour
                 yield return new WaitForSeconds(1);
             }
 
-
-            yield return new WaitForSeconds(60);
+            StopCoroutine(myCoRoutine);
         }
 
 

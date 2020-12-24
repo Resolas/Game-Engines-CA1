@@ -13,6 +13,13 @@ public class UniHPSys : MonoBehaviour
             instantiateOnPos = GetComponent<Transform>();
         }
 
+
+    }
+
+    private void OnEnable()
+    {
+        if (isPlayer) getCam = Camera.main.gameObject;
+
     }
 
     public int health = 100;
@@ -30,7 +37,7 @@ public class UniHPSys : MonoBehaviour
 
     public Transform instantiateOnPos;
     private bool playOnce = false;
-
+    private GameObject getCam;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -39,6 +46,8 @@ public class UniHPSys : MonoBehaviour
 
         if (isDead)
         {
+            if (isPlayer) getCam.transform.parent = null;
+
             if (playDeathEffectNow) Instantiate(deathEffect,instantiateOnPos.position,Quaternion.identity);
 
             if (isDead && destroyImmOnDeath != true)
