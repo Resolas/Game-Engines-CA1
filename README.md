@@ -35,29 +35,312 @@ test
 
 Enemy Spawning ---
 how the spawning will work is that the enemy ships will first spawn in as a single ship core module, it is essentially derived from the city tower generation script modified to build a ship instead, which in turn generates the other available modules in its referenced scriptable object generation table, which essentially allows endless configurations of new ships to spawn in, its generation settings can be edited in its script or prefab, adjusting its maximum length, give a different generation table etc...
+
+This is the generation parameters, that allows me to edit the size, and what can spawn as part of the ship, (Note: zSpacing is to correctly space out to prevent overlap, in this case I've set it to 20)
 ``` C#
+[Header("Generation Settings")]
+    public int frontMaxLength = 5;
+    public int rearMaxLength = 5;
+    public int frontMinLength = 3;
+    public int rearMinLength = 3;
+
+    public EnemyPrefabTable myGenTable;
+
+    public float zSpacing;
+
+
+```
+
+This is the function that generates the ship (note: I may have messed out with the naming going where but it does exactly what it does)
+``` C#
+
+    void GenerateShip()
+    {
+        int frontRng = Random.Range(frontMinLength,frontMaxLength);
+        int rearRng = Random.Range(rearMinLength,rearMaxLength);
+
+        float xPos = transform.position.x;
+        float yPos = transform.position.y;
+        float zPos = transform.position.z;
+
+        // Front
+        for (int i = 1; i < frontRng; i++)
+        {
+
+            if (i < frontRng - 1)
+            {
+                int bodyMod = Random.Range(0, myGenTable.bodyModules.Length);
+                GameObject bodyBlock = Instantiate(myGenTable.bodyModules[bodyMod], new Vector3(xPos,yPos,zPos + zSpacing * -i),transform.rotation);
+                bodyBlock.transform.parent = gameObject.transform;
+            }
+            else
+            {
+                int rearMod = Random.Range(0, myGenTable.rearModules.Length);
+                GameObject rearBlock = Instantiate(myGenTable.rearModules[rearMod], new Vector3(xPos, yPos, zPos + zSpacing * -i), transform.rotation);
+                rearBlock.transform.parent = gameObject.transform;
+            }
+            
+        }
+
+        // Rear
+        for (int i = 1; i < rearRng; i++)
+        {
+
+            if (i < rearRng - 1)
+            {
+                int bodyMod = Random.Range(0, myGenTable.bodyModules.Length);
+                GameObject bodyBlock = Instantiate(myGenTable.bodyModules[bodyMod], new Vector3(xPos, yPos, zPos + zSpacing * i), transform.rotation);
+                bodyBlock.transform.parent = gameObject.transform;
+            }
+            else
+            {
+                int frontMod = Random.Range(0, myGenTable.bowModules.Length);
+                GameObject frontBlock = Instantiate(myGenTable.bowModules[frontMod], new Vector3(xPos, yPos, zPos + zSpacing * i), transform.rotation);
+                frontBlock.transform.parent = gameObject.transform;
+            }
+
+            
+        }
+
+
+    }
+
+
 
 ```
 
 Boss Generation ---
 While the boss has no script on its own it relies mainly on turrets and other existing scripts that lets it do things, I used a simple coroutine script that will slowly generate overtime generate all the boss' weapons available to it in the prefab tables.
+
+This here uses a simple coroutine script, instead of spawning all the modules at once, it spawns them at 1 second intervals until it reaches the spawnCount, once instantiated the object will be parented referenced transform in this case an empty rotator
 ``` C#
+public class BossModuleSpawner : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        myCoRoutine = StartCoroutine(SpawnModules());
+    }
+    Coroutine myCoRoutine;
+
+    public int spawnCount = 20;
+    public BossPrefabTable myPrefabTable;
+    public Transform parentToRing;
+    
+
+    IEnumerator SpawnModules()
+    {
+
+        while (true)
+        {
+
+            for (int i = 0; i < spawnCount; i ++)
+            {
+                int rng = Random.Range(0,myPrefabTable.myModules.Length);
+                GameObject mySpawnedMod = Instantiate(myPrefabTable.myModules[rng],transform.position,transform.rotation);
+                mySpawnedMod.transform.SetParent(parentToRing);
+
+                yield return new WaitForSeconds(1);
+            }
+
+            StopCoroutine(myCoRoutine);
+        }
+    }
+}
+
+
 
 ```
 
 Turrets ---
 The turrets use 'Turret' and 'FiringSys' Scripts, in which together allows me to create various turret types and weapons, firstly the turret checks for viable tags in targets, when an object is in its overlapsphere, it will check for its tag and what this turret is looking for e.g 'if (target.CompareTag("Enemy") && findEnemy != true) continue;' if the findEnemy is not true it will ignore and skip that iteration and move to the next until find______ bool is satisfied and runs the full code, it will also check for LOS if its not in LOS it will skip iteration etc, as for the FiringSys is where we setup our weapons, it is also used in player mechs and fixed weapons, once fully setup, drag it to the Turret scripts 'myWeapons[]' array, which then uses that to fire with.
+
+This part of the turret script here, tracks the target using various variables, so with that I can create both friend and foe turrets by ticking the findEnemy or findFriendly for example, and if its not satisfied it will skip the iteration of THAT target in range, and it will also skip if there is no LOS between that object and the turret hopefully sparing some computing resources.
 ``` C#
 
+    void TrackTarget()
+    {
+
+        Collider[] targets = Physics.OverlapSphere(transform.position,range);
+        
+
+        float nearestDist = Mathf.Infinity;
+        Transform closestTarget = null;
+        bool isVis;
+
+        foreach (Collider target in targets)
+        {
+            if (target.CompareTag("Untagged") || target.CompareTag("Projectile") || target.CompareTag("Ground")) continue;    // Ignore everything that's Untagged
+            if (target.CompareTag("Enemy") && findEnemy != true) continue;
+            if (target.CompareTag("Friendly") && findFriendly != true) continue;
+            if (target.CompareTag("Player") && findPlayer != true) continue;
+            if (target.CompareTag("Structure") && findStructure != true) continue;
+
+            // LOS
+            RaycastHit hit;
+
+            if (Physics.Raycast(transform.position, target.transform.position - transform.position, out hit) && hit.transform.tag == target.transform.tag)
+            {
+                isVis = true;
+                Debug.DrawLine(target.transform.position, transform.position, Color.green);
+            }
+            else
+            {
+                isVis = false;
+                Debug.DrawLine(target.transform.position, transform.position, Color.red);
+                continue;
+            }
+
+
+
+
+            //    Vector3 pointAB = target.transform.position - transform.position;
+            getDistToTarget = Vector3.Distance(transform.position,target.transform.position);   // Get dist between point A and B
+            
+            
+            if (getDistToTarget <= nearestDist && isVis)                                                 // If new object is closer than previous, becomes the new closest target
+            {
+                nearestDist = getDistToTarget;
+                closestTarget = target.GetComponent<Transform>();
+                
+            }
+
+            if (closestTarget != null && nearestDist < range && isVis)      // If not null finalize the target
+            {
+                myTarget = closestTarget.transform;
+                
+                Debug.Log("TrackTestHasTarget");
+            }
+            else
+            {
+                myTarget = null;                // NOTE this does not seem to work, target is reset at IEnumerator
+                Debug.Log("TrackTestNull");
+            }
+         //   Debug.Log("nearest target " + nearestDist + " " + closestTarget + " " + myTarget);
+
+         //   myTarget = closestTarget.GetComponent<Transform>();   // Finalized Target
+
+        }
+
+    }
+
 ```
+
+Homing and Getting Target ---
+This is the most interesting and prominent pieces of code in the project, that makes the 'game' look nice and the more interesting parts for me to code and learn from, as the homing code is self explanatory below, I'll talk about the target identification, how it gets its is A it gets its target from the intermediary script (FiringSys) which is from the turret tracking its target, which sets its homingTarget of the target's transform upon instantiation, which in turn it will lock onto any anything the turret is targeting and chases it.
+``` C#
+
+void ModeHoming()
+    {
+        if (myHomingTarget != null)
+        {
+            myRB.velocity = transform.forward * speed;
+
+            var targetRot = Quaternion.LookRotation(myHomingTarget.position - transform.position);
+
+            myRB.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRot, rotSpeed * Time.deltaTime));
+        }
+        else
+        {
+            for (int i = 0; i < effectsOnHit.Length; i++)
+            {
+                Instantiate(effectsOnHit[i], transform.position, Quaternion.identity);
+            }
+
+            for (int i = 0; i < leaveExEffectsOnHit.Length; i++)
+            {
+                leaveExEffectsOnHit[i].transform.parent = null;
+            }
+
+            Destroy(gameObject);
+        }
+    }
+
+```
+and B which the player uses via raycast.collider out from the center of the camera, and sends back its transform directly to the missiles upon instantiation which it will lock onto ANYTHING, it also gets the position for where the normal guns shoot at via hit.point.
+``` C#
+
+void GetFiringPosition()
+    {
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(myCamera.transform.position, myCamera.transform.forward, out hit, Mathf.Infinity))
+        {
+
+            var getPoint = hit.point;   // The position the ray hits
+            Vector3 hitPos = getPoint;
+            var getCol = hit.collider;  // The target data for homing weapons
+
+            for (int i = 0; i < myWeaponsTrans.Length; i++)
+            {
+                if (weaponLookPos[i]) myWeaponsTrans[i].transform.LookAt(hitPos);
+
+                if (getLockOn[i]) myWeaponSys[i].setTarget = getCol.transform;
+
+
+            }
+
+            Debug.Log("RAYPOS + " + hitPos + "  " + getCol.transform);
+        }
+
+
+    }
+
+```
+
 
 Player ---
 --- See instructions to work: how it works is that it uses rigidbody.addrelativeforce to navigate its surroundings, when its on ground the player has to press space then once in the air space again to start flying which turns gravity off for the rigidbody, as for weapons control it uses raycast from the center of the camera marked by the crosshair, to tell where the assigned gunArms to fire and gets target data such as transform position for homing missiles to work.
-``` C#
 
+This is the movement part of the script, by using relativeforce, instead of transform.translate, gave me a lot of opportunities of what to do rigidbody/physics based movement, albeit the submission's movement is unfinished, I will now know what to do with this type of movement, what it does with relativeforce, I can rotate the player, move and sidestep on its local axis instead of global.
+``` C#
+void Movement()
+    {
+
+        horz = Input.GetAxis("Horizontal"); // Strafe side to side
+        vert = Input.GetAxis("Vertical");   // Move forwards & backwards
+
+        if (isFlying)   // Flight Mode
+        {
+            
+
+            myRB.useGravity = false;
+            height = Input.GetAxis("Fly");   // Ascend & Descend
+            myRB.AddForce(Vector3.up * speed * height * Time.deltaTime);
+
+
+
+
+        }
+        else {
+            myRB.useGravity = true;
+        }
+
+
+        myRB.AddRelativeForce(Vector3.right * speed * horz * Time.deltaTime);
+        myRB.AddRelativeForce(Vector3.forward * speed * vert * Time.deltaTime);
+
+        
+
+        if (onGround && Input.GetKeyDown(KeyCode.Space))
+        {
+            myRB.velocity = new Vector3(myRB.velocity.x,jumpPower,myRB.velocity.z);
+
+            
+        }
+        else if (onGround != true && Input.GetKeyDown(KeyCode.Space)) isFlying = true;       // sets it to flying while not on ground
+
+        transform.Rotate(0,Input.GetAxis("Mouse X") * rotSpeed * Time.deltaTime,0);    // Rotate the player with mouse
+        rotYCam.transform.Rotate(-Input.GetAxis("Mouse Y") * rotSpeed * Time.deltaTime,0,0); // rotate child object to look up and down
+    }
 ```
 
+Note: I'm not going to talk about every script, only the important parts and the ones that are seen on the video otherwise it will take too long!
+
 # References
+
+None?
 
 # What I'm most Proud of in the Assignment
 
