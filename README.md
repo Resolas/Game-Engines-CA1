@@ -30,7 +30,47 @@ Overall the game will be largely built mainly with a city generator code, genera
 City Generation ---
 First of all, it starts with mainland generator which creates the height layers and district surfaces which in turn generates the cities, it will use raycast to hit a position to spawn the baseTowers that generates the building, both mainland generator and district/city generator uses the same script.
 ``` C#
-test
+private void GenerateBuildingPos()
+    {
+
+        for (int i = 0; i < loopX; i++)
+        {
+
+            for (int j = 0; j < loopZ; j++)
+            {
+
+                if (rngOn) rngVal = Random.Range(0,100);
+
+                if (rngVal < spawnChance || rngOn != true)
+                {
+                    float xPos = transform.position.x + (baseX * i);
+                    float zPos = transform.position.z + (baseZ * j);
+
+                    Vector3 rayPos = new Vector3(xPos, 500, zPos);
+                    LayerMask mask = LayerMask.GetMask("Ground");
+
+                    RaycastHit hit;
+
+                    Debug.Log("SPAWN");
+                    if (Physics.Raycast(rayPos, Vector3.down, out hit, 1000f, ~mask))
+                    {
+                        //   var pickBlock = Random.Range(0,myGenTable.bodyModules.Length);
+
+
+
+                        //    GenerateCityCluster();
+
+                        Instantiate(buildingType, new Vector3(xPos, hit.point.y, zPos), Quaternion.identity);
+
+                    }
+
+                }
+
+            }
+
+        }   
+
+    }
 ```
 
 Enemy Spawning ---
