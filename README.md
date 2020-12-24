@@ -51,7 +51,7 @@ This is the generation parameters, that allows me to edit the size, and what can
 
 ```
 
-This is the function that generates the ship (note: I may have messed out with the naming going where but it does exactly what it does)
+This is the function that generates the ship (note: I may have messed up with the naming going where but it does exactly what it does)
 ``` C#
 
     void GenerateShip()
@@ -340,17 +340,24 @@ Note: I'm not going to talk about every script, only the important parts and the
 
 # References
 
-None?
+Mech Inspiration
+https://static.myfigurecollection.net/upload/pictures/2010/10/08/112464.jpeg
+
+Boss Weapon Inspiration
+https://i.ytimg.com/vi/JI_Hhy1hras/maxresdefault.jpg
+
+Homing Missile Tutorial
+https://www.youtube.com/watch?v=feTek1j1Beo&ab_channel=XenosmashGames
 
 # What I'm most Proud of in the Assignment
 
 First thing I'm most proud of is getting turrets to work mostly the way I wanted them to, along with the intent of making the scripts as modular as possible for my usage which I most likely achieved in my perspective, but on the flipside with the nature of the project with so many objects that targetable caused intense lagspikes, I would definately try and improve on the code and use it for future projects
 
-Second would be the Player controller, as it shows progress towards my ability to make games that I want with that kind of controller other than making generation code and AIs.
+Second would be the Player controller, as it shows progress towards my ability to make games that I want with that kind of controller other than making generation code and AIs. Especially for games involving rigidbody/physics based controls
 
 Third and last thing would be the explosion effects I've worked on with the Unity's Shuriken particle system, which is supposed to bring the wow factor to the visuals instead of using color changing materials to do so, adding in the post process really made them stand out.
 
-Overall, I'm quite proud of my experimentation in this project especially in these areas of code, raycasts, AI, Player Controllers and city/world generation, as I may have worked on them before, it further solidifies my understanding of these concepts, what can be done and cannot, although the scope of the project maybe too big for just one person to handle and left the end product to be rather unrefined or unfinished and has no sound at all, it is an opportunity for me to try out and experiment on as many areas of code, it may imply that the project was never meant to be finished and is supposed to be a means to an end, which is to allow me to code games without a hint of uncertainty.
+Overall, I'm quite proud of my experimentation in this project especially in these areas of code, raycasts, AI, Player Controllers and city/world generation, as I may have worked on them before, it further solidifies my understanding of these concepts, what can be done and cannot, although the scope of the project maybe too big for just one person to handle and left the end product to be rather unrefined or unfinished,has no sound at all and some content in the project left unused, it is an opportunity for me to try out and experiment on as many areas of code, it may imply that the project was never meant to be finished and is supposed to be a means to an end, which is to allow me to code games without a hint of uncertainty.
 
 # Proposal submitted earlier can go here
 # Game-Engines-CA1        
